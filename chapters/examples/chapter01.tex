@@ -34,69 +34,65 @@ Basically, relevant documentation on the various query languages is analyzed and
 To support this, selected languages are tried out in a test project and the corresponding learnings are integrated into the work.
 
 
+\chapter{Criteria for comparison}
+First, comparative criteria are introduced against which the different languages are compared.
 
-\chapter{Structure}
-\label{sec:intro:Structure}
-After a general introduction to the topic of \glqq Different query languages for graph databases \grqq{}, 
-an overview of the different query languages is given. 
-Furthermore, it is shown how the different languages build on each other and which dependencies exist between the languages.
-Subsequently, selected query languages that are to be classified as relevant are reviewed, 
-tested and differentiated from each other.
-The relevance of the languages is defined in terms of their popularity and their influence on the ISO standard for query languages for graph databases.
-After presenting the individual selected query languages, the path to a uniform ISO standard is described. 
-In addition, the ISO standard is presented in a compact form.
-The research paper concludes with a discussion and a final conclusion.
+The evaluation is done purely qualitatively as this is a complex topic that is difficult to evaluate on the basis of a uniform scale. 
+Nevertheless, the aim is to evaluate the languages as objectively and reproducibly as possible on the basis of the defined criteria.
 
+\section{Expressiveness}
+Expressiveness in the context of query languages for graph databases means the ability 
+of a language to allow a wide range of queries on graphs and their underlying databases.
+An expressive language can be used with
 \begin{itemize}
-	\item[1] Introduction
-	\begin{itemize}
-		\item[1.1] Problem statement
-		\item[1.2] Motivation and objectives
-		\item[1.3] Approach
-	\end{itemize}
-	\item[2] Different query languages and their concepts
-	\begin{itemize}
-		\item[2.1] Cypher
-		\item[2.2] Gremlin
-		\item[2.3] SPARQL
-		\item[2.4] Comparsion and differentiation of selected languages and concepts 
-	\end{itemize}
-	\item[3] The ISO-Standard for GQL
-	\item[4] Summary
-	\item[5] Outlook and Discussion
-	\item[7] Conclusion
+	\item complex patterns
+	\item relationships
 \end{itemize}
+even across various different graphs.
+In addition, an expressive language offers users the corresponding flexibility
+when querying graph structures.
+
+\section{Ease of Use}
+For users, it is important that the corresponding query language is intuitive to understand, follows familiar and learned patterns 
+and is as close as possible to the de facto industry standard. 
+On the other hand, a less intuitive language means an increased learning curve, 
+which makes the technology more difficult to use.
+
+\section{Performance and Performance Optimization}
+Performance is a decisive factor when dealing with the analysis of large amounts of data. 
+Especially when it comes to evaluations that need to be carried out in real time or very quickly. 
+A recommendation system does not help anyone if it does not deliver an answer in a reasonable time.
+This criterion evaluates in particular the ability of the corresponding language to enable techniques 
+that improve the performance of queries on graph databases.
+Particular attention is paid to the following two factors:
+* Implementation of index-based structures
+* Parallel processing
+
+\section{Interoperability}
+How well a query language intergrates with other tools, techniques and API`s is an important
+criteria for the decision for and against the query language and often for the entire 
+database system.
+
+\section*{Closeness to the ISO standard}
+n particular, attention is paid to the extent to which the respective language is oriented 
+towards the ISO standard for query languages for graph databases.
+A language that is strongly oriented towards the ISO standard or whose model and structure 
+has a high proportion of the ISO standard automatically ensures, 
+that the user has to acquire a low level of proprietary knowledge, 
+which is beneficial to the user-friendliness of the language.
+In addition, a strong orientation towards the ISO standard ensures interoperability 
+with other technologies and systems, 
+as it can be assumed that these are also oriented towards at least the basic concepts of the ISO standard.
+
+In the next chapter the ISO-standard for Graph databases will be introduced to enable the reader 
+to compare the corresponding language with the ISO-standard when reading chapter XXX.
+
+\chapter*{The ISO-standard for query languages for graph databases}
+
+
 
 
 \chapter{Timeline}
 \label{sec:intro:Timeline}
-After the topic was assigned at the end of March, the literature research was completed in mid-April. 
-A preliminary structure and the exposé were created. After submitting the exposé at the end of April, the actual research paper will be started. 
-The goal is to complete the paper by mid-June in order to have two weeks for final 
-corrections and small changes before the final submission.
-\begin{table}[htbp]
-    \centering
-    \caption{Task Schedule}
-    \label{tab:schedule}
-    \begin{tabular}{@{}lll@{}}
-        \toprule
-        Task                                & Deadline & Week \\ \midrule
-        Selection and assignment of topics  &          & 15   \\
-        Literature search                   &          & 16   \\
-        Literature review                   &          & 17   \\
-        Literature search                   &          & 17   \\
-        Planning a draft structure         &          & 17   \\
-        Writing and submitting an exposé   &          & 17   \\
-        Create structure                   &          & 18   \\
-        Write introduction                 &          & 18   \\
-        Submit peer review                 &          & 18   \\
-        Write main part with subchapters   &          & 21   \\
-        Submit draft paper                 &          & 21   \\
-        Write conclusion                   &          & 22   \\
-        Correction reading                 &          & 23   \\
-        Check formatting                   &          & 24   \\
-        Check bibliography and references  &          & 26   \\
-        Submit final draft                 &          & 27   \\ \bottomrule
-    \end{tabular}
-\end{table}
+
 
