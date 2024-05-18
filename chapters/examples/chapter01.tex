@@ -65,6 +65,10 @@ A recommendation system does not help anyone if it does not deliver an answer in
 This criterion evaluates in particular the ability of the corresponding language to enable techniques 
 that improve the performance of queries on graph databases.
 Particular attention is paid to the following two factors:
+\begin{itemize}
+	\item Implementation of index-based structures
+	\item Parallel processing
+\end{itemize}
 * Implementation of index-based structures
 * Parallel processing
 
@@ -73,7 +77,7 @@ How well a query language intergrates with other tools, techniques and API`s is 
 criteria for the decision for and against the query language and often for the entire 
 database system.
 
-\section*{Closeness to the ISO standard}
+\section{Closeness to the ISO standard}
 n particular, attention is paid to the extent to which the respective language is oriented 
 towards the ISO standard for query languages for graph databases.
 A language that is strongly oriented towards the ISO standard or whose model and structure 
@@ -87,12 +91,85 @@ as it can be assumed that these are also oriented towards at least the basic con
 In the next chapter the ISO-standard for Graph databases will be introduced to enable the reader 
 to compare the corresponding language with the ISO-standard when reading chapter XXX.
 
-\chapter*{The ISO-standard for query languages for graph databases}
+\chapter{The ISO-standard for query languages for graph databases}
+\section{Overview of the GQL-standard}
+In short, GQL is a new standard for a property graph database language developed by 
+international standards committee.
+GQL is an acronym for Graph Query Language.
+It is the first time in more than 35 years, that the ISO released a new 
+standard for database query language.
 
+In opposite to SQL, where data is organized in tables, graph databases structure data in graphs. 
+This enables new ways to analyze and recognize patterns in very large amounts of 
+data without having specific knowledge about the data itself.
+Various use cases for graph databases have already been mentioned in chapter xxx.
+\section{Scope of the GQL-standard}
+As already mentioned graph databases store and retrieve nodes (vertexes) and
+edges between nodes (relationships). GQL is a delclarative language influenced both by 
+existing property graph database products and by the SQL standard.
+The GQL standard is a complete database language that supports
+\begin{itemize}
+	\item creating
+	\item reading
+	\item updating
+	\item deleting
+	\item modifying
+\end{itemize}
+property graph data. \\
+Graph data can be organized in two different ways:
+\begin{itemize}
+    \item Schema free or
+    \item constrained by an database administrator.
+\end{itemize}
+Schema free graph data has no restrictions for adding and changing graph data.
+Graph data that is subject to a predefined schema must fulfill this at all times, 
+otherwise an error is triggered.\\
+The schema of graph data is specified via so-called graph types, 
+which on the one hand specify the structure of the nodes as well as that of the edges, 
+i.e.the relationships between the nodes.
+\section{Examples of common GQL query operations}
+This chapter provides a brief introductionto GQL capabilities including
+\begin{itemize}
+	\item Queries and Graph Pattern Matching
+	\item Add, modify and delete operations
+	\item Transactions
+\end{itemize}
+\subsection{Queries and Graph Pattern Matching}
+GQL quries are based on rich Graph Pattern Matching (GPM) language.
+The below example findes all nodes with a one-hop relationship to a node with a 
+productId of \textit{6594301c4aa9b3232889e7c3}
+\begin{lstlisting}
+    {
+       MATCH (a {productId: "6594301c4aa9b3232889e7c3"}) - [b] -> (c)
+	   RETURN a, b, c
 
+    }
+\end{lstlisting}
 
+The GQL-standard does not define how the returned data has to be displayed
+to the user. Two possible ways can be:
+\begin{itemize}
+	\item Graph Data Visualization tools
+	\item Textoutput
+\end{itemize}
+Here is suggestion how the above listing TODO can be displayed:
+This below table shows how the output can be displayed as text \\
+TODO table erstellen
 
-\chapter{Timeline}
-\label{sec:intro:Timeline}
+\section{Schema free vs graph types}
+A schema free graph accepts any form of graph data which makes it relatively fast to use 
+but on the other hand gives the user control over the data 
+and therefore a certain amount of data proliferation is accepted and has to be managed.\\
+A graph type is a kind of template that specifies the structure of the graph, which must be adhered to at all times.
+The structure of the nodes as well as the edges or both can be specified.
+The following example illustrates the concept of a graph type
+\begin{lstlisting}
+    {
+       CREATE GRAPH TYPE /folder
+       (client: Client => {cid::STRING, cname::STRING}),
+       (agent:Agent => {no::STRING, office::STRING}),
+       (client)-[:SUPERVISED_BY]->(agent)
 
+    }
+\end{lstlisting}
 
