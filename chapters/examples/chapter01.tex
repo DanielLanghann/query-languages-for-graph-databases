@@ -69,8 +69,7 @@ Particular attention is paid to the following two factors:
 	\item Implementation of index-based structures
 	\item Parallel processing
 \end{itemize}
-* Implementation of index-based structures
-* Parallel processing
+
 
 \section{Interoperability}
 How well a query language intergrates with other tools, techniques and API`s is an important
@@ -138,7 +137,7 @@ This chapter provides a brief introductionto GQL capabilities including
 GQL quries are based on rich Graph Pattern Matching (GPM) language.
 The below example findes all nodes with a one-hop relationship to a node with a 
 productId of \textit{6594301c4aa9b3232889e7c3}
-\begin{lstlisting}
+\begin{lstlisting}[caption={Example for one hop graph pattern query}, label={lst:createOneHopGraph}]
     {
        MATCH (a {productId: "6594301c4aa9b3232889e7c3"}) - [b] -> (c)
 	   RETURN a, b, c
@@ -152,15 +151,157 @@ to the user. Two possible ways can be:
 	\item Graph Data Visualization tools
 	\item Textoutput
 \end{itemize}
-Here is suggestion how the above listing TODO can be displayed:
+Here is suggestion how the above listing \ref{lst:createOneHopGraph} can be displayed:
 This below table shows how the output can be displayed as text \\
 TODO table erstellen
 
+
+
+\subsection{Quantified path patterns}
+GQL GPM also provides capabilities for quantified graph patterns.
+The following example finds all paths where one node is related to another noder
+up to ten hops:
+\begin{lstlisting}[caption={Example for quantified graph pattern}, label={lst:createQuantifiedGraph}]
+    MATCH((a)-[r]->(b)){1,10}
+	RETURN a, r, b
+\end{lstlisting}
+More complex quantified path patterns are possible. 
+\subsection{Complex Graph pattern}
+The following example matches a pattern
+with nodes of type \textit{Person} and \textit{Company}.
+The relationships between the nodes are \textit{worksFor} and \textit{partnerOf}.
+
+\begin{lstlisting}[caption={Example for a complex quantified graph pattern (Benchmark)}, label={lst:benchmark}]
+    MATCH (person:Person)-[r1:worksFor]->(company:Company)-[r2:partnerOf]->(partner:Company)
+	WHERE person.age > 25 AND company.revenue > 1000000
+	WITH person, company, partner, COUNT(r1) AS workRelationships, COLLECT(r2) AS partnerRelationships
+	MATCH (person)-[r3:KNOWS]->(colleague:Person)
+	WHERE colleague.age < 30
+	RETURN person.name AS personName, company.name AS companyName, partner.name AS partnerName, 
+		workRelationships, partnerRelationships, COLLECT(colleague.name) AS youngColleagues
+	ORDER BY person.name, company.name
+	LIMIT 100
+\end{lstlisting}
+
+The mathing pattern:
+\begin{lstlisting}[caption={Matching pattern of complex quantified graph query}, label={lst:matchOfComplexGraph}]
+    MATCH (person:Person)-[r1:worksFor]->(company:Company)-[r2:partnerOf]->(partner:Company)
+\end{lstlisting}
+matches a pattern where a \textit{Person} works for a \textit{Company} and that 
+\textit{Company} patners with another \textit{Company}.
+
+The filter of the query:
+\begin{lstlisting}[caption={Filter of complex quantified graph query}, label={lst:filterOfComplexGraph}]
+	WHERE person.age > 25 AND company.revenue > 100000
+\end{lstlisting}
+filters all persons with an age > 25 and companys with a revenue > 100000.
+
+The part
+\begin{lstlisting}[caption={Aggregations and collections of complex quantified graph query}, label={lst:filterOfComplexGraph}]
+	WITH person, company, partner, COUNT(r1) AS work_relationships, COLLECT(r2) AS partneRelationships
+\end{lstlisting}
+aggregates the number of \textit{worksFor} relationships and collects the 
+\textit{partnerOf} relationships for further use in the query in the second match pattern:
+\begin{lstlisting}[caption={Further matching of complex quantified graph query}, label={lst:secondFilterOfComplexGraph}]
+	MATCH (person)-[r3:knows]->(colleague:Person)
+	WHERE colleague.age < 30
+\end{lstlisting}
+Listing \ref{lst:secondFilterOfComplexGraph} matches additional patterns where a
+\textit{Person knows} another \textit{Person} who are younger than 30.\clearpage
+The Return statement:
+\begin{lstlisting}[caption={Return statement of complex quantified graph query}, label={lst:returnOfComplexGraph}]
+	RETURN person.name AS personName, company.name AS companyName, partner.name AS partnerName, 
+		workRelationships, partnerRelationships, COLLECT(colleague.name) AS youngColleagues
+	ORDER BY person.name, company.name
+	LIMIT 100
+\end{lstlisting}
+specifies the output of the querie \ref{lst:quantifiedComplexGraph} and returns 
+the name of the \textit{Person}, \textit{Company} and \textit{Partnter} along 
+with the count of \textit{worksFor} relationships, the list of \textit{partnerOf} relationships,
+and the names of the \textit{youngColleagues}. \newline
+The output will orderd by the names of \textit{person.name} and \textit{company.name}
+of the corresponding nodes \textit{Person} and \textit{Company}.
+Next we will cover typical Insert, Update and Delete operations.
+
+\subsection{Insert, Update and Delete operations}
+The following example shows a typical insert statement:
+\begin{lstlisting}[caption={Typical insert statement}, label={lst:insertStatement}]
+    /*Insert one node */
+	INSERT (:Customer {name: 'XYZ Ltd.', customerStatus: 'Active'})
+\end{lstlisting}
+In this example \textit{Customer} is a Label and \textit{name} and \textit{customerStatus}
+are properties.\newline
+Labels are identifiers that are either
+\begin{itemize}
+	\item present or
+	\item not present.
+\end{itemize}
+Properties are Key-Value pairs.\newline
+Both nodes and relationships can have labels and properties.
+Basically, nodes are enclosed in parenthesis:
+\begin{lstlisting}
+	(:Person {firstName: 'Daniel', lastName: 'Langhann'})
+\end{lstlisting}
+and relationships (edges) are enclosed in square brackets:
+\begin{lstlisting}
+	 [:r3:knows]
+\end{lstlisting}\clearpage
+GQL supports insert operations for complex graph pattern like:
+\begin{lstlisting}[caption={Complex insert statement}, label={lst:complexInsertStatement}]
+    /*Insert two nodes and one edge */
+	INSERT (:Customer {name: 'XYZ Ltd.', 
+					customerStatus: 'Active',
+					customerSince: date("2024-05-19")})
+	- [:located {since: date('2024-01-01')}] ->
+	(:City {name: 'Bremen',
+			state: 'Bremen',
+			country: 'Germany'})
+\end{lstlisting}
+The statement \ref{lst:complexInsertStatement} inserts two nodes \textit{Customer} and
+\textit{City} and the relationship \textit{located}.\newline
+Insert operations as shown in Listing \ref{lst:edgeInsertStatement} can also be the result of a \textit{MATCH} pattern:
+\begin{lstlisting}[caption={Insert statement for an edge}, label={lst:edgeInsertStatement}] 
+	/*Creates an edge isStudentOf. */
+	MATCH (a {name: 'Langhann'}), (b {name: 'Stoerl'})
+	INSERT (a)-[:isStudentOf]->(b)
+\end{lstlisting}
+In the Listing \ref{lst:edgeInsertStatement} the variables \textit{a} and \textit{b} are
+aliases.\newline They are defined in the \textit{MATCH} clause and are only part of the Memory until
+the Query determines.\newline The result of a \textit{MATCH} caluse \ref{lst:edgeInsertStatement} is a \textbf{cartesian product} of the two nodes.
+This is why each node expression returns only one node. The \textit{INSERT} statement will only insert one edgs.\newline
+An Update in GQL is done by identififying the nodes or edges to be updated.
+After identififying the instances the user can set or remove properties:
+\begin{lstlisting}[caption={Update statements in GQL}, label={lst:updateStatement}] 
+	/*Update*/
+	MATCH (d:Customer) where d.id = '6594301c4aa9b3232889e7c3'
+	SET d.status='inactive'
+\end{lstlisting}
+The following example removes properties of a node \textit{Customer}:
+\begin{lstlisting}[caption={Delete propteries in GQL}, label={lst:removeStatement}] 
+	/*Remove propertiers*/
+	MATCH (d:Customer) where d.id = '6594301c4aa9b3232889e7c3'
+	REMOVE d.invoiceAccepted
+\end{lstlisting}
+The following example deletes a node and the related nodes:
+\begin{lstlisting}[caption={Remove nodes and in GQL}, label={lst:deleteStatement}] 
+	/*Delete Customer and related Nodes*/
+	MATCH  (a {id: '6594301c4aa9b3232889e7c3'})-[b]->(c)
+	DETACH DELETE a,c
+\end{lstlisting}
+\section{Transactions}
+In GQL serializable transactions and their additional implmentation-defined transaction modes 
+are supported.
+Transactions are starting with either an \textbf{explicit} or \textbf{implicit} \textit{START TRANSACTION}
+statement and terminated with either a \textit{COMMIT} or \textit{ROLLBACK}.
+The user can also  implement automatic transactions starts and commits.
+
+
+
 \section{Schema free vs graph types}
-A schema free graph accepts any form of graph data which makes it relatively fast to use 
-but on the other hand gives the user control over the data 
-and therefore a certain amount of data proliferation is accepted and has to be managed.\\
-A graph type is a kind of template that specifies the structure of the graph, which must be adhered to at all times.
+A schema free graph accepts \textbf{any} form of graph data which makes it relatively \textbf{fast} to use 
+but on the other hand gives the user \textbf{control} over the data 
+and therefore a certain amount of \textbf{data proliferation is accepted} and has to be managed.\\
+A \textbf{graph type} is a kind of \textbf{template} that specifies the structure of the graph, which must be adhered to at all times.
 The structure of the nodes as well as the edges or both can be specified.
 The following example illustrates the concept of a graph type
 \begin{lstlisting}
@@ -172,4 +313,680 @@ The following example illustrates the concept of a graph type
 
     }
 \end{lstlisting}
+If the user is creating a graph by using a graph type the contents of the nodes and edges 
+are constrained by the graph type, which makes sure the data model will be respected in 
+all transactions. This is also relevant for update operations. If an update operations does 
+not follow the restrictions of the graph type the transaction will be rolled back and 
+the database system will throw an error.
+\section{Compare graph structured data and tables}
+In a typical SQL database, data is organized and stored in tables and rows where each 
+table has a fixed schema.\newline
+Relationships between tables are basically defined as so called \textbf{Foreign Keys}.
+The user of the database has know and understand these relationships to be able
+to write queries over more than one table.\newline
+In a property graph database, the level of abstraction is high, and allows the user 
+whole sets of tables to treat as one unit, which can be understand as a \textbf{data product}.
+\section{Summary of the introduction of the GQL standard}
+In this chapter, the standard was briefly introduced to give the reader the opportunity to better compare 
+the individual languages presented in the following chapter against the standard 
+and thus to better understand the comparison criterion TODO kriterium referernzieren.
+
+\chapter{Different query languages for graph databases}
+After clarifiying important terms and concepts of graph databases and a short introduction of the GQL-standard,
+in this chapter, specific database systems, their concepts and and syntax will be introduced
+and compared against the criteria definded in chater TODO reference to chapter.
+\section{openCypher}
+openCypher is an open Source Framework which is the basis for Cyper the Query language
+developed by Neo4J.
+Basically, openCypher is the query language which is most near to the GQL standard
+or in other words GQL is strong oriented on the fundamentals and concepts of openCypher.
+The core syntax of GQL and openCypher is largely identical.
+Next, the five evaluation criteria will be applied to openCypher.
+\subsection{Expressiveness of openCypher}
+The first criteria is expressiveness or the ability of openCypher to allow a wide
+range of queries on graph data TODO reference to chapter two. The expressiveness
+of all querie languages will be evaluated against the following criteria:
+
+\begin{itemize}
+	\item Graph Pattern Matching
+	\item Data Manipulation
+	\item Aggregation and Functions
+	\item Expressive Filtering
+\end{itemize}
+openCypher suppports intuitive pattern matching with a concise syntax that enables the
+user to describe complex graph structures easily which the following example shows:
+\begin{lstlisting}[caption={Graph Pattern Matching in openCypher}, label={lst:GPMOC}] 
+	MATCH  (a)-[r]->(b)
+	RETURN a,b
+\end{lstlisting} As shown in \cref{lst:GPMOC} the user can \textbf{search} all nodes \textit{a}
+related to node \textit{b} by relationship \textit{r}.\newline 
+The following example shows how the user can \textbf{manipulate} data in openCypher:
+
+\begin{lstlisting}[caption={Graph Pattern Matching in openCypher}, label={lst:simpleGPMOC}] 
+	MATCH (c {customerStatus: 'Inactice'})
+	SET c.invoiceAccepted = 'False'
+	RETURN a
+\end{lstlisting}
+
+
+Also, Aggregation and Functions are supported in openCypher:
+\begin{lstlisting}[caption={Aggregation and Functions in openCypher}, label={lst:aggregationFunctionsOC}]
+	MATCH (c:Company)-[:PARTNER_OF]->(p:Company)
+	RETURN c.name, COUNT(p) AS partnersCount, AVG(p.revenue) AS averagePartnerRevenue
+\end{lstlisting}
+Next is an example for expressive Filtering in openCypher:
+\begin{lstlisting}[caption={Expressive Filtering in openCypher with Company Nodes}, label={lst:companyExpressiveFilteringOC}]
+	MATCH (c:Company)-[:PARTNER_OF]->(p:Company)
+	WHERE c.industry = 'Tech' AND p.revenue > 1000000
+	RETURN c.name, p.name, p.revenue
+\end{lstlisting}
+
+\subsection{Ease of use of openCypher}
+Due to the proximity to the GQL standard, it can be stated that if a user has learned 
+and understood the basic concepts of query languages for graph databases, 
+they can also learn the openCypher language, 
+simply for the reason that the language is highly oriented towards industry standards.
+With the GQL standard, the aim was to develop a query language for graph databases that is as intuitive as possible in order to, among other things, make the technology available to a wide range of users. 
+open the technology to a wide range of user.
+The example in \cref{lst:simpleGPMopenCypher} shows how clear and reduced in complexity the language is.
+
+
+\subsection{Performance and performance optimization of openCypher}
+
+The complexity of a query, including the number of nodes, the relationships and the depth of the
+pattern to match has uge impact of the performance. Also the size of the data which has 
+be processed has an impact of the query performance. Indexing is one way to optimize the 
+performance of a query and is an important concept to enable fast queries of large 
+datasets. The following example \cref{lst:indexCypher} shows the creation of an index in openCypher:
+\begin{lstlisting}[caption={Index creation in openCypher}, label={lst:indexCypher}] 
+	CREATE INDEX ON :Customer(id)
+\end{lstlisting}
+The Example shown in \cref{lst:indexCypher} creates an Index on the property \textit{id}
+of the node \textit{Customer}. The user can also run 
+\begin{lstlisting} 
+	CALL db.indexes()
+\end{lstlisting}
+to review the current indexes and optimize them  if needed.
+\newline
+In openCypher the user can analyze how the query works by using the keyword \textit{EXPLAIN}
+and \textit{PROFILE} to optimize the query for example by limiting the scope:
+\begin{lstlisting}[caption={Using EXPLAIN or PROFILE in openCypher}, label={lst:explainProfileInopenCypher}] 
+	EXPLAIN | PROFILE MATCH  (a)-[r]->(b)
+	RETURN a,b
+\end{lstlisting}
+for example by limiting the scope:
+\begin{lstlisting}[caption={Set a Limit in openCypher}, label={lst:limitInopenCypher}] 
+	MATCH  (a: Company {name: "ABC GmbH"})-[r:PARTNER_OF]->(b: Company {name: XYZ AG"})
+	RETURN a,b LIMIT 10
+\end{lstlisting}
+The user can also use the \textit{UNWIND} clause to organize data operations in batches:
+\begin{lstlisting}[caption={Batch operations in openCypher using UNWIND}, label={lst:batchInopenCypher}] 
+	UNWIND  [{name: 'ABC Inc.', name: 'XYZ Ltd.'}] AS customer
+	CREATE (c:Customer {name: customer.name})
+\end{lstlisting}
+
+\subsection{Interoperability of openCypher}
+Many vendors for Graph Databases using openCypher for example:
+\begin{itemize}
+	\item Neo4J
+	\item Memgraph
+	\item SAP HANA
+	\item RedisGraph
+	\item AWS Amazon Web Services
+\end{itemize}
+Neo4J for example provides an API to openCypher (or Cypher), so the user can interact
+with the Graph Databases within the application source code, which it makes easy to 
+integrate openCypher. The following example shows the integration in an example Python application
+and is based on the original documentation of Neo4J:
+\begin{lstlisting}[caption={Interact with Cypher via Python}, label={lst:pythonAndopenCypher}] 
+	from neo4j import GraphDatabase, RoutingControl
+	URI = "neo4j://<host>:7687"
+	AUTH = ("neo4j", "password")
+	
+	def add_customer(driver, customerName, locationName):
+		driver.execute_query(
+			"MERGE (a:Customer {name: $customerName}) "
+			"MERGE (location:City {name: $locationName}) "
+			"MERGE (a)-[:located]->(location)",
+			customerName=customerName, locationName=locationName, database_="neo4j",
+		)
+
+
+	def print_customer(driver, customerStatus):
+		records, _, _ = driver.execute_query(
+			"MATCH (a:Customer)-[:LOCATED]->(location) WHERE a.customerStatus = $customerStatus"
+			"RETURN location.name ORDER BY location.name",
+			name=name, database_="neo4j", routing_=RoutingControl.READ,
+		)
+		for record in records:
+			print(record["friend.name"])
+
+
+	with GraphDatabase.driver(URI, auth=AUTH) as driver:
+		add_customer(driver, "XYZ GmbH", "Bremen")
+		print_customer(driver, "active")
+\end{lstlisting}
+\newpage 
+The fact that large database providers use openCypher as a basis ensures a high density of interfaces 
+to other databases and technologies, 
+as these providers have an interest in distributing or selling the technology. 
+In addition, there is a large community of people who use the technology and provide support. 
+The example in \cref{lst:pythonAndopenCypher} has shown how openCypher can be used via Python.\newline 
+However, it is critical to note that the further development of openCypher 
+is being driven in particular by providers such as Neo4J and AWS, 
+which in turn have a strong commercial interest in further establishing openCypher as a standard.
+In this context, it would appear desirable 
+for competition to emerge in the graph database sector and for the technology 
+to remain truly open and for the market 
+power of individual technology providers, 
+which already tend to be very large, to be further consolidated. 
+
+\subsection{Closeness to the GQL standard of openCypher}
+The previous chapters have already pointed out how closely openCypher 
+and the GQL standard are linked. 
+The syntax is almost identical. 
+Differences in the syntax and capabilities exist, 
+but are not decisively relevant and it can be assumed that openCypher 
+and the GQL standard will be further harmonized. 
+It therefore seems appropriate at this point to highlight the differences 
+between openCypher and the GQL standard rather than the similarities:
+
+\begin{itemize}
+	\item GQL uses the keyword INSERT where openCypher uses CREATE
+	\item FOR statement in GQL is equivalent to UNWIND in openCypher
+	\item MERGE, FOREACH and LOAD CSV are available in openCypher but not in GQL
+\end{itemize}
+
+
+\section{Gremlin}
+Gremlin is query and traversal language for graph databases, developed as part of Apache TinkerPop.
+It supports a standardised way to interact with graph data by enabling users to:
+\begin{itemize}
+	\item traverse
+	\item query and
+	\item manipulate
+\end{itemize}
+nodes, edges and properties of graph data. Gremlin is \textbf{not} tied to a specific graph database.
+Gremlin provides a high level abstraction layer.
+This means that not only TinkerPop-enabled graph systems execute Gremlin traversals, 
+but also, every Gremlin traversal can be evaluated as either a \textbf{real-time database query}
+or as a \textbf{batch analytics query}. 
+\textbf{TinkerPop} standard.
+\subsection{Gremlin - a traversal language}
+Traversals are sequences of steps that navigate through a graph. Theses steps can include operations
+like:
+\begin{itemize}
+	\item Filtering
+	\item Mapping 
+	\item Reducing
+\end{itemize}
+The following example points out the concept and it based on the benchmark query definded in \cref{lst:benchmark}:
+\begin{lstlisting}[caption={Benchmark Query in Gremlin}, label={lst:benchmarkGremlin}] 
+	g.V().hasLabel('Person')
+	.has('age', gt(25))
+	.as('person')
+	.outE('worksFor').as('r1')
+	.inV().hasLabel('Company')
+	.has('revenue', gt(1000000))
+	.as('company')
+	.outE('partnerOf').as('r2')
+	.inV().hasLabel('Company')
+	.as('partner')
+	.select('person', 'company', 'partner', 'r1', 'r2')
+	.group()
+		.by(select('person', 'company', 'partner'))
+		.by(
+		project('workRelationships', 'partnerRelationships', 'youngColleagues')
+			.by(__.select('r1').count())
+			.by(__.select('r2').fold())
+			.by(
+			__.select('person')
+				.out('KNOWS').hasLabel('Person').has('age', lt(30))
+				.values('name').fold()
+			)
+		)
+	.unfold()
+	.order()
+		.by(select(keys).by('person').by('name'), asc)
+		.by(select(keys).by('company').by('name'), asc)
+	.limit(100)
+	.project('personName', 'companyName', 'partnerName', 'workRelationships', 'partnerRelationships', 'youngColleagues')
+		.by(select(keys).by('person').by('name'))
+		.by(select(keys).by('company').by('name'))
+		.by(select(keys).by('partner').by('name'))
+		.by(select(values).by('workRelationships'))
+		.by(select(values).by('partnerRelationships'))
+		.by(select(values).by('youngColleagues'))
+\end{lstlisting}
+\subsection{Expressiveness of Gremlin}
+To evaluate the Expressiveness of Gremlin the examples from Chapter TODO will be 
+applied to Gremlin.
+The example for Graph Pattern Matching defined in TODO will be implemented in Gremlin as the following:
+\begin{lstlisting}[caption={Graph Pattern Matching in Gremlin}, label={lst:simpleGPMGremlin}]
+	g.V().match(
+		__.as('a').out().as('b')
+	).select('a', 'b')
+\end{lstlisting}
+\textit{g.V()} starts with all vertices in the graph. In Gremlin the termin vertice is used
+instead of node but it means almost the same TODO Fußnote.
+\begin{lstlisting}
+	.match(
+		__.as('a').out().as('b')
+\end{lstlisting}
+finds all pattern where there is an outgoing edge
+from vertex \textit{a} to vertex \textit{b}.
+\textit{select('a', 'b')} selects and returns the matched vertices.
+Next, the data manipulation in Gremlin will demonstrated based on TODO reference 
+\begin{lstlisting}[caption={Updating Vertex Properties in Gremlin}, label={lst:updateGremlin}]
+	g.V().has('customerStatus', 'Inactive').property('invoiceAccepted', 'False').valueMap()
+\end{lstlisting}
+First, it starts to find all vertices in the graph and filters all with a match with
+\begin{lstlisting}
+	.has('customerStatus', 'Inactive')
+\end{lstlisting}
+After matching the property \textit{invoiceAccepted} will be set to \textit{False}.
+The \textit{.valueMap} returns the properties of the updated vertices.
+Next, the criteria Aggregations and FUnctions will be implemented in Gremlin based in TODO reference
+\begin{lstlisting}[caption={Aggregation and Functions in Gremlin with Company Nodes}, label={lst:companyAggregationFunctionsGremlin}]
+	g.V().hasLabel('Company').as('c')
+	  .out('PARTNER_OF').hasLabel('Company').as('p')
+	  .group()
+	    .by('c')
+	    .by(
+	      fold().coalesce(
+	        unfold().values('revenue').mean().as('averagePartnerRevenue'),
+	        constant(0)
+	      ).as('averagePartnerRevenue')
+	      .count().as('partnersCount')
+	    )
+	  .select(keys, values)
+	  .unfold()
+	  .project('c.name', 'partnersCount', 'averagePartnerRevenue')
+	    .by(select(keys).values('name'))
+	    .by(select(values).select('partnersCount'))
+	    .by(select(values).select('averagePartnerRevenue'))
+\end{lstlisting}
+The part 
+\begin{lstlisting}
+	g.V().hasLabel('Company').as('c')
+\end{lstlisting}
+selects all vertices with the label \textit{Company} and set an alias \textit{c}.
+The part of TODO
+\begin{lstlisting}
+	.out('PARTNER_OF').hasLabel('Company').as('p')
+\end{lstlisting} traverse out from \textit{c}.
+The traverse is using the outgoing edge \textit{PARTNER\_OF} to other vertices with 
+the Label \textit{Company} and set an alias \textit{p}. \newline With the expression
+\begin{lstlisting}
+	.group()
+	    .by('c')
+\end{lstlisting}
+the results will grouped by the original company vertices.
+The calculation part:
+\begin{lstlisting}
+	.by(
+	      fold().coalesce(
+	        unfold().values('revenue').mean().as('averagePartnerRevenue'),
+	        constant(0)
+	      ).as('averagePartnerRevenue')
+	      .count().as('partnersCount')
+	    )
+\end{lstlisting}
+calculates for each group the average revenue and the count of the partners.\\
+The rest of the query defined in TODO is for flatten the grouped results and 
+organize the output.
+The next query is based on TODO and shows how Expressive Filtering works in Gremlin:
+\begin{lstlisting}[caption={Expressive Filtering in Gremlin with Company Nodes}, label={lst:companyExpressiveFilteringGremlin}]
+	g.V().hasLabel('Company').has('industry', 'Tech')
+	 .out('PARTNER_OF').hasLabel('Company').has('revenue', gt(1000000))
+	 .project('cName', 'pName', 'pRevenue')
+	   .by(inV().values('name'))
+	   .by(values('name'))
+	   .by(values('revenue'))
+\end{lstlisting}
+The query does the same as in TODO. The part
+\begin{lstlisting}
+	.project('cName', 'pName', 'pRevenue')
+	   .by(inV().values('name'))
+	   .by(values('name'))
+	   .by(values('revenue'))
+\end{lstlisting} 
+projects the desired properties into a result set.
+
+\subsection{Interoperability of Gremlin}
+Gremlin is designed to be \textbf{language agnostic}, meaning it is compatible and
+can be used with other programming languages (Gremlin Language Variants).
+Important supported languages are:
+\begin{itemize}
+	\item Python
+	\item Java
+	\item JavaScript
+\end{itemize}
+This allows the developer to use Gremlin within the current or preferred 
+development environment.
+As already mentioned in TODO Gremlin operates independetly of the corresponding
+database system. It can be used with every database the TinkerPop stack, but huge
+vendors like also provide plug in's to Gremlin including Neo4J, AWS and Azure.
+In addition, there are seamless integrations to big data systems such as:
+\begin{itemize}
+	\item Apache Hadoop and Spark
+	\item Apache Giraph
+\end{itemize}
+The following example is based on TODO and implements the functionality in native Gremlin:
+\begin{lstlisting}[caption={Interact with Gremlin via Python}, label={lst:pythonAndGremlin}]
+	from gremlin_python.structure.graph import Graph
+	from gremlin_python.process.graph_traversal import __
+	from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+
+	URI = "ws://<host>:8182/gremlin"
+	AUTH = ("username", "password")
+
+	def add_customer(g, customerName, locationName):
+		g.V().hasLabel('Customer').has('name', customerName).fold().coalesce(
+			__.unfold(),
+			__.addV('Customer').property('name', customerName)
+		).as_('customer').V().hasLabel('City').has('name', locationName).fold().coalesce(
+			__.unfold(),
+			__.addV('City').property('name', locationName)
+		).as_('location').addE('located').from_('customer').to('location').iterate()
+
+	def print_customer(g, customerStatus):
+		customers = g.V().hasLabel('Customer').has('status', customerStatus).out('located').values('name').toList()
+		for customer in customers:
+			print(customer)
+
+	graph = Graph()
+	connection = DriverRemoteConnection(URI, 'g')
+	g = graph.traversal().withRemote(connection)
+
+	try:
+		add_customer(g, "XYZ GmbH", "Bremen")
+		print_customer(g, "active")
+	finally:
+		connection.close()
+\end{lstlisting}
+\subsection{Performance and performance optimization in Gremlin}
+Due to the fact, that Gremlin provides an indenpendent high level API 
+the performance optimization steps directly related to the underlying database
+has to be done on the database itself and is not directly part of Gremlin.
+For example it is possible to create an Index via openCypher as shown in TODO and then use
+Gremlin to run the query.
+The following rules should be considerd to optimize the performance of Gremlin query:
+\begin{itemize}
+	\item Filtering has be applied as early as possible to reduce the query scope.
+	\item If possible using limit()
+	\item Utilize local traversals (e.g. select(), local()) to operate on specific parts of the graph
+\end{itemize}
+Below is one example for the "Apply filter early" strategy:
+\begin{lstlisting}[caption={Apply filter early strategy in Gremlin}, label={lst:filterEarlyGremlin}]
+	// No alligned with filter early strategy
+	g.V().out('partner_of').has('revenue', gt(100000)).values('name')
+
+	// Alligned  filter early strategy
+	g.V().has('revenue', gt(100000)).out('partner_of').values('name')
+
+\end{lstlisting}
+As already shown in Example TODO the user can limit the results of a Gremlin query:
+\begin{lstlisting}[caption={Set Limits in Gremlin}, label={lst:limitGremlin}]
+	g.V().hasLabel('Company').has('name', 'ABC GmbH')
+		.outE('PARTNER_OF')
+		.inV().hasLabel('Company').has('name', 'XYZ AG')
+		.limit(10)
+\end{lstlisting}
+The user can also use the concepts of \textit{PROFILE} and \textit{EXPLAIN} already introduced in 
+TODO by just setting
+\textit{.profile} or \textit{.explain} at the end of the query to get more detailed 
+information about the execution plan with and without actually running the query.
+
+\subsection{Closeness to the GQL standard of openCypher}
+Due to the fact that the query paradigm of Gremlin is \textbf{imperative} and the
+query paradigm of the GQL-standard is \textbf{declarative} it can be concluded that Gremlin 
+is comparatively far away from the GQL standard. Because the imperative paradigm 
+forces the user to define \textbf{how} to retrieve the data and not as the GQL standard
+defines \textbf{what} data has be retrieved or processed.
+The syntax of Gremlin is procedural like a programming language and the GQL standard is
+inspired by SQL.\newline
+But, users who are familiar with the concepts of querying non relational databases like 
+MongoDB will recognize the concepts of Gremlin.\\
+In Addition, important Big Data technologies like Apache Hadoop TODO are seamless interacting
+with Gremlin which should ensure broad acceptance in the field of Big Data, 
+regardless of the integration of Gremlin into important programming languages such as Python.
+TODO.
+
+\section{SPARQL}
+SPARQL is a graph-based query language for querying content from the Resource Description Framework (RDF) description system,
+which is used in databases to formulate logical statements about any object. 
+The name is a recursive acronym for SPARQL Protocol And RDF Query Language.
+\subsection{RDF Ressource Description Framework}
+The Resource Description Framework (RDF) is a standard model 
+for the exchange and representation of information on the web. 
+It was developed by the W3C (World Wide Web Consortium) and is a central component 
+of the \textbf{Semantic Web}.
+RDF is a simple data structure consisiting of a triple of
+\begin{itemize}
+	\item Subjects
+	\item Predicates 
+	\item Objects 
+\end{itemize}
+Any Ressource has an identifier the Uniform Ressource Identifier (URI).
+SPARQL can be used to express queries across different data sources, 
+regardless of whether the data is stored natively as RDF or displayed as RDF via middleware. 
+SPARQL includes functions for querying required and optional graph patterns 
+and their AND (conjunction) and OR (disjunction) operations. 
+SPARQL also supports testing expandable values and restricting queries.
+Below the Benchmark query TODO is performed by using SPARQL:
+\begin{lstlisting}[caption={Benchmark query in SPARQL}, label={lst:benchmarkSPQARQL}]
+	PREFIX ex: <http://examplehost.org/>
+	SELECT ?personName ?companyName ?partnerName (COUNT(?r1) AS ?workRelationships) (GROUP_CONCAT(?r2; separator=",") AS ?partnerRelationships) (GROUP_CONCAT(?colleagueName; separator=",") AS ?youngColleagues)
+	WHERE {
+	?person a ex:Person ;
+			ex:worksFor ?company ;
+			ex:name ?personName ;
+			ex:age ?personAge .
+	FILTER (?personAge > 25)
+
+	?company a ex:Company ;
+			ex:partnerOf ?partner ;
+			ex:name ?companyName ;
+			ex:revenue ?companyRevenue .
+	FILTER (?companyRevenue > 1000000)
+
+	?partner a ex:Company ;
+			ex:name ?partnerName .
+	
+	?person ex:KNOWS ?colleague .
+	?colleague a ex:Person ;
+				ex:age ?colleagueAge ;
+				ex:name ?colleagueName .
+	FILTER (?colleagueAge < 30)
+	}
+	GROUP BY ?personName ?companyName ?partnerName
+	ORDER BY ?personName ?companyName
+	LIMIT 100
+\end{lstlisting}
+The \textit{PREFIX} declaration defines the (fictive) base URI.
+The \textit{SELECT} clause specifies the variables to be returned and the
+\textit{WHERE} clause contains the tripple patterns and filter that match 
+the definded relationships and constraints.
+The \textit{GROUP BY} clause is doing the almost the same as the \textit{WITCH} Clause in 
+the Benchmark query TODO.
+\textit{ORDER BY} and \textit{LIMIT} sort and limit the result.
+ 
+The results of SPARQL queries can be result sets or RDF diagrams.\newline
+As in the last Exampled of openCypher TODO and Gremlin TODO the criterias for Expressiveness
+defined in TODO will be applied to SPARQL.
+\subsection{Expressiveness of SPARQL}
+SPARQL support GPM through triple pattern TODO, which are conceptually similar to 
+to the pattern matching in property graph query languages but the syntax is 
+different.
+The query of Listing 4.1 TODO can be written in SPARQL as the following:
+\begin{lstlisting}[caption={Graph Pattern Matching in SPARQL}, label={lst:GPMSPARQL}]
+	SELECT ?a ?b
+	WHERE {
+  		?a ?r ?b .
+	}
+\end{lstlisting}
+The query TODO matches any triple where \textit{?a} is connected to \textit{?b}
+by any predicate \textit{?r}.
+As already mentioned RDF data is represented in triple TODO. Instead of setting
+properties on nodes, the user add or modify triples. The following example
+creates two \textit{Customer} Objects:
+\begin{lstlisting}[caption={Create Customer Objects in SPARQL}, label={lst:createSPARQL}]
+	@prefix ex: <http://examplehost.org/> .
+
+	ex:Customer1 a ex:Customer ;
+		ex:customerStatus "Inactive" ;
+		ex:invoiceAccepted "True" .
+
+	ex:Customer2 a ex:Customer ;
+		ex:customerStatus "Active" ;
+		ex:invoiceAccepted "True" .
+\end{lstlisting}
+On the created Objects the Update query based on TODO will be performed:
+\begin{lstlisting}[caption={Update Customer Objects in SPARQL}, label={lst:createSPARQL}]
+	PREFIX ex: <http://examplehost.org/>
+
+	DELETE {
+		?c ex:invoiceAccepted ?oldValue .
+	}
+	INSERT {
+		?c ex:invoiceAccepted "False" .
+	}
+	WHERE {
+		?c a ex:Customer ;
+		ex:customerStatus "Inactive" ;
+		ex:invoiceAccepted ?oldValue .
+	}
+\end{lstlisting}
+The query shown in TODO which provides an example for aggregation and the usage of functions 
+can be written in SPARQL as follows:
+\begin{lstlisting}[caption={Aggregation and Functions in SPARQL}, label={lst:aggFuncSPARQL}]
+	PREFIX ex: <http://examplehost.org/>
+
+	SELECT ?companyName (COUNT(?partner) AS ?partnersCount) (AVG(?partnerRevenue) AS ?averagePartnerRevenue)
+	WHERE {
+	?company a ex:Company ;
+			ex:name ?companyName ;
+			ex:partnerOf ?partner .
+	
+	?partner a ex:Company ;
+				ex:revenue ?partnerRevenue .
+	}
+	GROUP BY ?companyName
+\end{lstlisting}
+The concepts regarding the query TODO are aready explained in the context of TODO-
+Based on listing TODO the following example shows the Implementation of expressive Filtering in
+SPARQL:
+\begin{lstlisting}[caption={Expressive Filtering in SPARQL}, label={lst:aggFuncSPARQL}]
+	PREFIX ex: <http://example.org/>
+
+	SELECT ?companyName ?partnerName ?partnerRevenue
+	WHERE {
+	?company a ex:Company ;
+			ex:name ?companyName ;
+			ex:industry "Tech" ;
+			ex:partnerOf ?partner .
+	
+	?partner a ex:Company ;
+				ex:name ?partnerName ;
+				ex:revenue ?partnerRevenue .
+	FILTER (?partnerRevenue > 1000000)
+	}
+\end{lstlisting}
+
+\subsection{Interoperability of SPARQL}
+As Gremlin TODO for SPARQL are libraries for important programming languages available, like 
+\begin{itemize}
+	\item Python
+	\item Java
+	\item JavaScript
+\end{itemize}
+which ensures strong interoperability between SparQL and other systems and APIs. 
+Also Integrations for Big Data and ETL (Extract, Transform, Load) tools like 
+\begin{itemize}
+	\item Apache NiFi
+	\item Talend 
+	\item Apache Hadoop
+	\item Apache Spark
+\end{itemize}
+The integration with Python shown in TODO and TODO can be also implemented in SPARQL by using 
+Python and related libraries:
+\begin{lstlisting}[caption={Interact with SPARQL and Python}, label={lst:pythonSPARQL}]
+	from SPARQLWrapper import SPARQLWrapper, JSON
+
+	ENDPOINT = "http://your-sparql-endpoint/sparql"
+	USERNAME = "your-username"
+	PASSWORD = "your-password"
+
+	def add_customer(sparql, customer_name, location_name):
+		query = f"""
+		PREFIX ex: <http://example.org/>
+
+		INSERT DATA {{
+		ex:{customer_name} a ex:Customer ;
+							ex:name "{customer_name}" ;
+							ex:located ex:{location_name} .
+							
+		ex:{location_name} a ex:City ;
+							ex:name "{location_name}" .
+		}}
+		"""
+		sparql.setQuery(query)
+		sparql.method = 'POST'
+		sparql.query()
+
+	def print_customer(sparql, customer_status):
+		query = f"""
+		PREFIX ex: <http://example.org/>
+
+		SELECT ?locationName
+		WHERE {{
+		?customer a ex:Customer ;
+					ex:customerStatus "{customer_status}" ;
+					ex:located ?location .
+		?location ex:name ?locationName .
+		}}
+		ORDER BY ?locationName
+		"""
+		sparql.setQuery(query)
+		sparql.setReturnFormat(JSON)
+		results = sparql.query().convert()
+
+		for result in results["results"]["bindings"]:
+			print(result["locationName"]["value"])
+
+	sparql = SPARQLWrapper(ENDPOINT)
+	sparql.setHTTPAuth("BASIC")
+	sparql.setCredentials(USERNAME, PASSWORD)
+
+	add_customer(sparql, "XYZ_GmbH", "Bremen")
+	print_customer(sparql, "active")
+\end{lstlisting}
+\subsection{Performance and performance optimization in SPARQL}
+As in other Languages so general rules should be applied on SPARQL Queries for example
+the already mentioned filter early strategy TODO which crucial when the query is 
+processed on a large dataset. 
+It is also possible to reduce and paginate the scope of a query by using \textit{LIMIT} and \textit{OFFSET}
+clauses.
+In addition it is also helpful, when the related RDF Store provides indexing as mentioned in TODO.
+As in Gremlin the tool set for performance optimization depends on the underlying database system TODO.
+\subsection{Closeness to the GQL standard of SPARQL}
+SPARQL excels in the context of \textbf{RDF} and the \textbf{Semantic Web}, offering robust querying capabilities for 
+\begin{itemize}
+	\item Linked Data and 
+	\item Ontologies
+\end{itemize}
+The capabilities provided in the GQL standard are designed for property graphs and are 
+intuitive for pattern matching and graph data algorithms for example implemented in the context of 
+\begin{itemize}
+	\item Social Networks
+	\item Recommendation Systems
+\end{itemize}
+Both, GQL and SPARQL are declarative languages, allowing the user to define which data is needed
+without specifing how the query has to be executed. Also both languages are oriented on the SQL standard
+and proving concepts people know when they are familiar with SQL.
+In conclusion, the concepts are similar but the underlying datamodel is likely but not the same.
+Graph data is be 
+
+
 
