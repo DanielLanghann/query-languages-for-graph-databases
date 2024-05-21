@@ -986,7 +986,70 @@ Both, GQL and SPARQL are declarative languages, allowing the user to define whic
 without specifing how the query has to be executed. Also both languages are oriented on the SQL standard
 and proving concepts people know when they are familiar with SQL.
 In conclusion, the concepts are similar but the underlying datamodel is likely but not the same.
-Graph data is be 
+Graph data is mapped more precisely in GQL and can be understood intuitively by the user.\newline
+In SPARQL graph data is represented as a triple and specifically adapted 
+to the described use cases TODO.
+
+\chapter{Conclusion}
+Die Arbeit schließt nun mit einer Zusammenfassung der Ergebnisse TODO und einem Ausblick TODO 
+in wie fern sich die Anfragesprachen für Graphdatenbanken entwickeln könnten.
+
+\section{Zusammenfassung}
+Im Kapitel TODO wurde als erste Sprache openCypher oder Cypher vorgestellt. 
+Cypher wird von Neo4J im Rahmen eines Datenbank Management Systems für Graphdatenbanken 
+vertrieben TODO. Auch weitere größere Anbieter wie AWS TODO bieten Graphdatenbanken an, die 
+mit der syntax von openCypher abgefragt bzw. betrieben werden können.
+Wesentliche Teile von openCypher haben es in den GQL standard geschafft. Die syntax ist 
+bis auf wenige Ausnahmen identisch TODO. Da zu erwarten ist, dass wie im Falle von SQL TODO
+sich die Anfragesprachen für Graphdatenbanken weiter mit dem standard konvergieren, 
+erscheint es lohnenswert, auf Technologien zu setzen, die dem GQL Standard sehr nahe kommen 
+oder weite Teile davon abbilden. \\
+SparQL ist für den spezifischen Einsatzzweck von Abfragen bezogen auf das Semantic Web 
+entworfen und erfüllt somit einen abweichenden Use Case bzw. ist nicht für das Datenmodel
+von property Graph Daten entworfen kann aber, wie gezeigt wurde auf solche Daten angewendet werden 
+TODO.
+\subsection{Ausdrucksstärke der vorgestellten Sprachen}
+Alle vorgestellten Sprachen bilden den Benchmark für Ausdrucksstärke ab TODO 
+und sind bezogen auf diesen als gleichwertig zu bezeichnen.
+\subsection*{Möglichkeiten zur Performance Optimierung der vorgestellten Sprachen}
+openCypher bietet direkte Möglichkeiten die Performance der zu grunde liegenden Datenbank 
+zu optimieren, da die Sprache als Teil eines Datenbank-Systemes zu verstehen ist.
+Gremlin und SPARQL bieten lediglich Möglichkeiten die Performance von Queries auszuwerten und 
+diese über z.B. gezieltes umstellen auf Filter-first Strategien zu verbessern.
+\subsection{Interoperability der vorgestellten Sprachen}
+Ebenfalls alle Sprachen bieten eine gute Interoperability zu wichtigen Systemen,
+und Programmiersprachen wie Python und Java TODO, 
+wobei auffällt, dass Gremlin als Teil der Apache Foundation im speziellen mit wichtigen
+Systemen aus dem Bereich Big Data verbunden ist, die ebenfalls von der Apache Foundation
+bereitgestellt werden wie Apache Spark und Apache Hadoop TODO.
+\subsection{Nähe zum GQL standard der vorgestellten Sprachen}
+Im prinzip konkuieren hier nur openCypher TODO und Gremlin TODO, da SPARQL nicht 
+Datenmodell von propertiers Graphdaten abbildet. openCypher ist wie bereits mehrfach 
+erwähnt sehr nahe an GQL standard angelehnt, man könnte auch sagen der GQL 
+standard basiert im Wesentlichen auf openCypher.
+
+\section{Abschließende Bewertung und Ausblick}
+Grundsätzlich sind alle vorgestellten Sprachen dafür ausgelegt auch großen Mengen 
+von Graph Daten oder graph ähnliche Strukturen (TODO) zu durchsuchen und zu bearbeiten.
+openCypher erscheint als die Sprache die im Kontext von reinen Graphdaten die Sprache zu sein,
+die genau auf diesen Use Case zugeschnitten ist. Die Syntax ist sehr intuitiv und im prinzip
+genau so gestalltet wie man es erwartet, wenn man sich die Strukturen von Graphen bestehend 
+aus Knoten und Kanten vorstellt.
+Durch die starke Nähe zum GQL standard ist gewährleistet, dass die Konzepte und die 
+syntax von openCypher auch zukünftig relevant sind.
+Die nahtlose Integration von Gremlin in die bereits erwähnten Big Data technologies 
+lässt auch diese Sprache hinreichend generisch erscheinen, auch wenn sie mit dem 
+industry Standard nur entfernt kompatibel oder gleichzusetzen ist. 
+SparQL folgt einem spezifischen Use Case und einer propriertäten Datenstruktur. 
+Die Relevant von SPARQL ist stark mit der Relevanz des Semantic Web verbunden.
+Im Kontext von reinen Graphdatenbanken ist davon auszugehen, dass die Konzepte von 
+openCypher weiter an Relevanz gewinnen und die Anbieter von kommerziellen Produkten
+in diesem Bereich die standardisierung in die bereits eingeschlagenen Richtung 
+weiter vorantreiben.
+
+
+
+
 
 
 
