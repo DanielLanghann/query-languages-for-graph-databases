@@ -2,7 +2,7 @@
 \label{ch:intro}
 
 \section{Research topic}
-\label{sec:intro:Forschungsthema}
+\label{sec:intro:research_topic}
 Graph databases have developed into a powerful tool for modeling and querying com-plex relations in various data types. 
 They are particularly suitable for dealing with linked data and complex network structures that essentially consist of nodes and their edges (relations). 
 Examples of use are e.g \citep{yuanyuan_tian_world_2022}:
@@ -12,35 +12,41 @@ Examples of use are e.g \citep{yuanyuan_tian_world_2022}:
 	\item Biological networks
 \end{itemize}
 In this paper, the topic of graph databases and selected query languages designed for graph databases will be presented and contextualized. 
-In particular, the path from different query languages to a uniform ISO standard is pointed out.
+In particular, 
+the path from different query languages to a uniform ISO standard is pointed out.
 
 
 \section{Motivation}
-\label{sec:intro:Motivation}
-The aim of this paper is to provide an overview of the different languages and to highlight the respective advantages and disadvantages, 
+\label{sec:intro:motivation}
+The aim of this paper is to provide an overview of selected important 
+query languages for graph databases and to highlight the respective advantages and disadvantages, 
 their capabilities, and limitations, as well as their specific use cases. 
 
 \section{State of research}
-\label{sec:intro:State of researc}
-Graph databases are a comparatively young technology in the field of database systems. 
+\label{sec:intro:state_of_research}
+Graph databases are a comparatively young technology in the field of database systems \citep{hare_isoiec_2024}.  
 Over time, various query languages have been developed with specific focuses and corresponding strengths and weaknesses.
-A common ISO standard should help to keep the technology and its application more generic \citep{hare_isoiec_2024}.
+A common ISO standard should help to keep the technology and its application more generic \citep{duckham_matt_gis_2024}.
 In this paper, important proprietary languages are presented and differentiated from each other. 
-In the further course, a overview of the different languages is created.
+In the further course, an overview of the different languages is created.
 
 \section{Approach}
-\label{sec:intro:Approach}
-Basically, relevant documentation on the various query languages is analyzed and the key points are highlighted. 
-To support this, selected languages are tried out in a test project and the corresponding learnings are integrated into the work.
+\label{sec:intro:approach}
+Basically, relevant documentation on the various query languages is analyzed 
+and the key points are highlighted. 
+To support this, selected languages are tried out in a test project 
+and the corresponding learnings are integrated into the work.
 
 
 \chapter{Criteria for comparison}
+\label{ch:criteria_for_comparison}
 First, comparative criteria are introduced against which the different languages are compared.
 
 The evaluation is done purely qualitatively as this is a complex topic that is difficult to evaluate on the basis of a uniform scale. 
 Nevertheless, the aim is to evaluate the languages as objectively and reproducibly as possible on the basis of the defined criteria.
 
 \section{Expressiveness}
+\label{sec:criteria_for_comparison:expressiveness}
 Expressiveness in the context of query languages for graph databases means the ability 
 of a language to allow a wide range of queries on graphs and their underlying databases.
 An expressive language can be used with
@@ -50,20 +56,25 @@ An expressive language can be used with
 \end{itemize}
 even across various different graphs.
 In addition, an expressive language offers users the corresponding flexibility
-when querying graph structures.
+when querying graph structures \citep{barcelo_expressive_2012}.
 
 \section{Ease of Use}
+\label{sec:criteria_for_comparison:ease_of_use}
 For users, it is important that the corresponding query language is intuitive to understand, follows familiar and learned patterns 
 and is as close as possible to the de facto industry standard. 
 On the other hand, a less intuitive language means an increased learning curve, 
-which makes the technology more difficult to use.
+which makes the technology more difficult to use \citep{barcelo_expressive_2012}.
 
 \section{Performance and Performance Optimization}
+\label{sec:criteria_for_comparison:performance}
 Performance is a decisive factor when dealing with the analysis of large amounts of data. 
-Especially when it comes to evaluations that need to be carried out in real time or very quickly. 
-A recommendation system does not help anyone if it does not deliver an answer in a reasonable time.
-This criterion evaluates in particular the ability of the corresponding language to enable techniques 
-that improve the performance of queries on graph databases.
+Especially when it comes to evaluations that need to be carried 
+out in real time or very quickly \citep{yuanyuan_tian_world_2022}. 
+A recommendation system does not help anyone if it does not deliver 
+an answer in a reasonable time.
+This criterion evaluates in particular the ability 
+of the corresponding language to enable techniques 
+that improve the performance of queries on graph databases \citep{yuanyuan_tian_world_2022}.
 Particular attention is paid to the following two factors:
 \begin{itemize}
 	\item Implementation of index-based structures
@@ -72,12 +83,14 @@ Particular attention is paid to the following two factors:
 
 
 \section{Interoperability}
+\label{sec:criteria_for_comparison:interoperability}
 How well a query language intergrates with other tools, techniques and API`s is an important
 criteria for the decision for and against the query language and often for the entire 
-database system.
+database system \citep{timon-reina_overview_2021}.
 
 \section{Closeness to the ISO standard}
-n particular, attention is paid to the extent to which the respective language is oriented 
+\label{sec:criteria_for_comparison:iso}
+Also attention is paid to the extent to which the respective language is oriented 
 towards the ISO standard for query languages for graph databases.
 A language that is strongly oriented towards the ISO standard or whose model and structure 
 has a high proportion of the ISO standard automatically ensures, 
@@ -85,25 +98,30 @@ that the user has to acquire a low level of proprietary knowledge,
 which is beneficial to the user-friendliness of the language.
 In addition, a strong orientation towards the ISO standard ensures interoperability 
 with other technologies and systems, 
-as it can be assumed that these are also oriented towards at least the basic concepts of the ISO standard.
+as it can be assumed that these are also oriented 
+towards at least the basic concepts of the ISO standard \citep{hare_isoiec_2024}.
 
 In the next chapter the ISO-standard for Graph databases will be introduced to enable the reader 
-to compare the corresponding language with the ISO-standard when reading chapter XXX.
+to compare the corresponding language 
+with the ISO-standard when reading chapter \ref{ch:different_query_languages_for_graph_databases}.
 
 \chapter{The ISO-standard for query languages for graph databases}
-\section{Overview of the GQL-standard}
+\label{ch:iso}
+\section{Overview of the ISO-GQL-standard}
+\label{sec:iso:overview}
 In short, GQL is a new standard for a property graph database language developed by 
 international standards committee.
 GQL is an acronym for Graph Query Language.
 It is the first time in more than 35 years, that the ISO released a new 
-standard for database query language.
+standard for database query language \citep{hare_isoiec_2024}.
 
 In opposite to SQL, where data is organized in tables, graph databases structure data in graphs. 
 This enables new ways to analyze and recognize patterns in very large amounts of 
-data without having specific knowledge about the data itself.
-Various use cases for graph databases have already been mentioned in chapter xxx.
+data without having specific knowledge about the data itself \citep{hare_isoiec_2024}.
+Various use cases for graph databases have already been mentioned in chapter \ref{sec:intro:research_topic}.
 \section{Scope of the GQL-standard}
-As already mentioned graph databases store and retrieve nodes (vertexes) and
+\label{sec:iso:scope}
+Graph databases store and retrieve nodes (vertexes) and
 edges between nodes (relationships). GQL is a delclarative language influenced both by 
 existing property graph database products and by the SQL standard.
 The GQL standard is a complete database language that supports
@@ -114,7 +132,7 @@ The GQL standard is a complete database language that supports
 	\item deleting
 	\item modifying
 \end{itemize}
-property graph data. \\
+property graph data \citep{hare_isoiec_2024}. \\
 Graph data can be organized in two different ways:
 \begin{itemize}
     \item Schema free or
@@ -125,18 +143,21 @@ Graph data that is subject to a predefined schema must fulfill this at all times
 otherwise an error is triggered.\\
 The schema of graph data is specified via so-called graph types, 
 which on the one hand specify the structure of the nodes as well as that of the edges, 
-i.e.the relationships between the nodes.
+i.e.the relationships between the nodes \citep{hare_isoiec_2024}.
 \section{Examples of common GQL query operations}
+\label{sec:iso:examples}
 This chapter provides a brief introductionto GQL capabilities including
 \begin{itemize}
 	\item Queries and Graph Pattern Matching
 	\item Add, modify and delete operations
 	\item Transactions
 \end{itemize}
+
 \subsection{Queries and Graph Pattern Matching}
-GQL quries are based on rich Graph Pattern Matching (GPM) language.
+\label{subsec:iso:examples:queries_and_graph_pattern_matching}
+GQL queries are based on rich Graph Pattern Matching (GPM) language.
 The below example findes all nodes with a one-hop relationship to a node with a 
-productId of \textit{6594301c4aa9b3232889e7c3}
+productId of \textit{6594301c4aa9b3232889e7c3} \citep{hare_isoiec_2024}
 \begin{lstlisting}[caption={Example for one hop graph pattern query}, label={lst:createOneHopGraph}]
     {
        MATCH (a {productId: "6594301c4aa9b3232889e7c3"}) - [b] -> (c)
@@ -144,7 +165,6 @@ productId of \textit{6594301c4aa9b3232889e7c3}
 
     }
 \end{lstlisting}
-
 The GQL-standard does not define how the returned data has to be displayed
 to the user. Two possible ways can be:
 \begin{itemize}
@@ -153,12 +173,13 @@ to the user. Two possible ways can be:
 \end{itemize}
 Here is suggestion how the above listing \ref{lst:createOneHopGraph} can be displayed:
 This below table shows how the output can be displayed as text \\
-TODO table erstellen
+TODO create table
 
 
 
 \subsection{Quantified path patterns}
-GQL GPM also provides capabilities for quantified graph patterns.
+\label{subsec:iso:examples:quantified_path_patterns}
+GQL GPM also provides capabilities for quantified graph patterns \citep{fan_adding_2016}.
 The following example finds all paths where one node is related to another noder
 up to ten hops:
 \begin{lstlisting}[caption={Example for quantified graph pattern}, label={lst:createQuantifiedGraph}]
@@ -224,6 +245,7 @@ of the corresponding nodes \textit{Person} and \textit{Company}.
 Next we will cover typical Insert, Update and Delete operations.
 
 \subsection{Insert, Update and Delete operations}
+\label{subsec:iso:examples:insert_update_and_delete_operations}
 The following example shows a typical insert statement:
 \begin{lstlisting}[caption={Typical insert statement}, label={lst:insertStatement}]
     /*Insert one node */
@@ -289,6 +311,7 @@ The following example deletes a node and the related nodes:
 	DETACH DELETE a,c
 \end{lstlisting}
 \section{Transactions}
+\label{sec:iso:transactions}
 In GQL serializable transactions and their additional implmentation-defined transaction modes 
 are supported.
 Transactions are starting with either an \textbf{explicit} or \textbf{implicit} \textit{START TRANSACTION}
@@ -298,6 +321,7 @@ The user can also  implement automatic transactions starts and commits.
 
 
 \section{Schema free vs graph types}
+\label{sec:iso:schema_free_vs_graph_types}
 A schema free graph accepts \textbf{any} form of graph data which makes it relatively \textbf{fast} to use 
 but on the other hand gives the user \textbf{control} over the data 
 and therefore a certain amount of \textbf{data proliferation is accepted} and has to be managed.\\
@@ -318,7 +342,9 @@ are constrained by the graph type, which makes sure the data model will be respe
 all transactions. This is also relevant for update operations. If an update operations does 
 not follow the restrictions of the graph type the transaction will be rolled back and 
 the database system will throw an error.
+
 \section{Compare graph structured data and tables}
+\label{sec:iso:compare_graph_structured_data_and_tables}
 In a typical SQL database, data is organized and stored in tables and rows where each 
 table has a fixed schema.\newline
 Relationships between tables are basically defined as so called \textbf{Foreign Keys}.
@@ -326,16 +352,20 @@ The user of the database has know and understand these relationships to be able
 to write queries over more than one table.\newline
 In a property graph database, the level of abstraction is high, and allows the user 
 whole sets of tables to treat as one unit, which can be understand as a \textbf{data product}.
+
 \section{Summary of the introduction of the GQL standard}
+\label{sec:iso:summary_of_the_introduction_of_the_gql_standard}
 In this chapter, the standard was briefly introduced to give the reader the opportunity to better compare 
 the individual languages presented in the following chapter against the standard 
 and thus to better understand the comparison criterion TODO kriterium referernzieren.
 
 \chapter{Different query languages for graph databases}
+\label{ch:different_query_languages_for_graph_databases}
 After clarifiying important terms and concepts of graph databases and a short introduction of the GQL-standard,
 in this chapter, specific database systems, their concepts and and syntax will be introduced
 and compared against the criteria definded in chater TODO reference to chapter.
 \section{openCypher}
+\label{sec:different_query_languages_for_graph_databases:openCypher}
 openCypher is an open Source Framework which is the basis for Cyper the Query language
 developed by Neo4J.
 Basically, openCypher is the query language which is most near to the GQL standard
@@ -343,6 +373,7 @@ or in other words GQL is strong oriented on the fundamentals and concepts of ope
 The core syntax of GQL and openCypher is largely identical.
 Next, the five evaluation criteria will be applied to openCypher.
 \subsection{Expressiveness of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:expressiveness}
 The first criteria is expressiveness or the ability of openCypher to allow a wide
 range of queries on graph data TODO reference to chapter two. The expressiveness
 of all querie languages will be evaluated against the following criteria:
@@ -382,6 +413,7 @@ Next is an example for expressive Filtering in openCypher:
 \end{lstlisting}
 
 \subsection{Ease of use of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:ease_of_use}
 Due to the proximity to the GQL standard, it can be stated that if a user has learned 
 and understood the basic concepts of query languages for graph databases, 
 they can also learn the openCypher language, 
@@ -392,7 +424,7 @@ The example in \cref{lst:simpleGPMopenCypher} shows how clear and reduced in com
 
 
 \subsection{Performance and performance optimization of openCypher}
-
+\label{subsec:different_query_languages_for_graph_databases:openCypher:performance}
 The complexity of a query, including the number of nodes, the relationships and the depth of the
 pattern to match has uge impact of the performance. Also the size of the data which has 
 be processed has an impact of the query performance. Indexing is one way to optimize the 
@@ -426,6 +458,7 @@ The user can also use the \textit{UNWIND} clause to organize data operations in 
 \end{lstlisting}
 
 \subsection{Interoperability of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:interoperability}
 Many vendors for Graph Databases using openCypher for example:
 \begin{itemize}
 	\item Neo4J
@@ -482,6 +515,7 @@ power of individual technology providers,
 which already tend to be very large, to be further consolidated. 
 
 \subsection{Closeness to the GQL standard of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:iso}
 The previous chapters have already pointed out how closely openCypher 
 and the GQL standard are linked. 
 The syntax is almost identical. 
@@ -499,6 +533,7 @@ between openCypher and the GQL standard rather than the similarities:
 
 
 \section{Gremlin}
+\label{sec:different_query_languages_for_graph_databases:gremlin}
 Gremlin is query and traversal language for graph databases, developed as part of Apache TinkerPop.
 It supports a standardised way to interact with graph data by enabling users to:
 \begin{itemize}
@@ -558,7 +593,9 @@ The following example points out the concept and it based on the benchmark query
 		.by(select(values).by('partnerRelationships'))
 		.by(select(values).by('youngColleagues'))
 \end{lstlisting}
+
 \subsection{Expressiveness of Gremlin}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:expressiveness}
 To evaluate the Expressiveness of Gremlin the examples from Chapter TODO will be 
 applied to Gremlin.
 The example for Graph Pattern Matching defined in TODO will be implemented in Gremlin as the following:
@@ -654,6 +691,7 @@ The query does the same as in TODO. The part
 projects the desired properties into a result set.
 
 \subsection{Interoperability of Gremlin}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:interoperability}
 Gremlin is designed to be \textbf{language agnostic}, meaning it is compatible and
 can be used with other programming languages (Gremlin Language Variants).
 Important supported languages are:
@@ -705,7 +743,9 @@ The following example is based on TODO and implements the functionality in nativ
 	finally:
 		connection.close()
 \end{lstlisting}
+
 \subsection{Performance and performance optimization in Gremlin}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:performance}
 Due to the fact, that Gremlin provides an indenpendent high level API 
 the performance optimization steps directly related to the underlying database
 has to be done on the database itself and is not directly part of Gremlin.
@@ -739,6 +779,7 @@ TODO by just setting
 information about the execution plan with and without actually running the query.
 
 \subsection{Closeness to the GQL standard of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:iso}
 Due to the fact that the query paradigm of Gremlin is \textbf{imperative} and the
 query paradigm of the GQL-standard is \textbf{declarative} it can be concluded that Gremlin 
 is comparatively far away from the GQL standard. Because the imperative paradigm 
@@ -754,10 +795,13 @@ regardless of the integration of Gremlin into important programming languages su
 TODO.
 
 \section{SPARQL}
+\label{sec:different_query_languages_for_graph_databases:sparql}
 SPARQL is a graph-based query language for querying content from the Resource Description Framework (RDF) description system,
 which is used in databases to formulate logical statements about any object. 
 The name is a recursive acronym for SPARQL Protocol And RDF Query Language.
+
 \subsection{RDF Ressource Description Framework}
+\label{subsec:different_query_languages_for_graph_databases:sparql:rdf}
 The Resource Description Framework (RDF) is a standard model 
 for the exchange and representation of information on the web. 
 It was developed by the W3C (World Wide Web Consortium) and is a central component 
@@ -815,7 +859,9 @@ the Benchmark query TODO.
 The results of SPARQL queries can be result sets or RDF diagrams.\newline
 As in the last Exampled of openCypher TODO and Gremlin TODO the criterias for Expressiveness
 defined in TODO will be applied to SPARQL.
+
 \subsection{Expressiveness of SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:expressiveness}
 SPARQL support GPM through triple pattern TODO, which are conceptually similar to 
 to the pattern matching in property graph query languages but the syntax is 
 different.
@@ -895,6 +941,7 @@ SPARQL:
 \end{lstlisting}
 
 \subsection{Interoperability of SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:interoperability}
 As Gremlin TODO for SPARQL are libraries for important programming languages available, like 
 \begin{itemize}
 	\item Python
@@ -962,15 +1009,20 @@ Python and related libraries:
 	add_customer(sparql, "XYZ_GmbH", "Bremen")
 	print_customer(sparql, "active")
 \end{lstlisting}
+
 \subsection{Performance and performance optimization in SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:performance}
 As in other Languages so general rules should be applied on SPARQL Queries for example
 the already mentioned filter early strategy TODO which crucial when the query is 
 processed on a large dataset. 
 It is also possible to reduce and paginate the scope of a query by using \textit{LIMIT} and \textit{OFFSET}
 clauses.
 In addition it is also helpful, when the related RDF Store provides indexing as mentioned in TODO.
-As in Gremlin the tool set for performance optimization depends on the underlying database system TODO.
+As in Gremlin the tool set for performance optimization depends on the 
+underlying database system TODO.
+
 \subsection{Closeness to the GQL standard of SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:iso}
 SPARQL excels in the context of \textbf{RDF} and the \textbf{Semantic Web}, offering robust querying capabilities for 
 \begin{itemize}
 	\item Linked Data and 
@@ -991,61 +1043,65 @@ In SPARQL graph data is represented as a triple and specifically adapted
 to the described use cases TODO.
 
 \chapter{Conclusion}
-Die Arbeit schließt nun mit einer Zusammenfassung der Ergebnisse TODO und einem Ausblick TODO 
-in wie fern sich die Anfragesprachen für Graphdatenbanken entwickeln könnten.
+\label{ch:conclusion}
+The work now concludes with a summary of the results TODO and an outlook TODO 
+to what extent query languages for graph databases could develop.
 
-\section{Zusammenfassung}
-Im Kapitel TODO wurde als erste Sprache openCypher oder Cypher vorgestellt. 
-Cypher wird von Neo4J im Rahmen eines Datenbank Management Systems für Graphdatenbanken 
-vertrieben TODO. Auch weitere größere Anbieter wie AWS TODO bieten Graphdatenbanken an, die 
-mit der syntax von openCypher abgefragt bzw. betrieben werden können.
-Wesentliche Teile von openCypher haben es in den GQL standard geschafft. Die syntax ist 
-bis auf wenige Ausnahmen identisch TODO. Da zu erwarten ist, dass wie im Falle von SQL TODO
-sich die Anfragesprachen für Graphdatenbanken weiter mit dem standard konvergieren, 
-erscheint es lohnenswert, auf Technologien zu setzen, die dem GQL Standard sehr nahe kommen 
-oder weite Teile davon abbilden. \\
-SparQL ist für den spezifischen Einsatzzweck von Abfragen bezogen auf das Semantic Web 
-entworfen und erfüllt somit einen abweichenden Use Case bzw. ist nicht für das Datenmodel
-von property Graph Daten entworfen kann aber, wie gezeigt wurde auf solche Daten angewendet werden 
-TODO.
-\subsection{Ausdrucksstärke der vorgestellten Sprachen}
-Alle vorgestellten Sprachen bilden den Benchmark für Ausdrucksstärke ab TODO 
-und sind bezogen auf diesen als gleichwertig zu bezeichnen.
-\subsection*{Möglichkeiten zur Performance Optimierung der vorgestellten Sprachen}
-openCypher bietet direkte Möglichkeiten die Performance der zu grunde liegenden Datenbank 
-zu optimieren, da die Sprache als Teil eines Datenbank-Systemes zu verstehen ist.
-Gremlin und SPARQL bieten lediglich Möglichkeiten die Performance von Queries auszuwerten und 
-diese über z.B. gezieltes umstellen auf Filter-first Strategien zu verbessern.
-\subsection{Interoperability der vorgestellten Sprachen}
-Ebenfalls alle Sprachen bieten eine gute Interoperability zu wichtigen Systemen,
-und Programmiersprachen wie Python und Java TODO, 
-wobei auffällt, dass Gremlin als Teil der Apache Foundation im speziellen mit wichtigen
-Systemen aus dem Bereich Big Data verbunden ist, die ebenfalls von der Apache Foundation
-bereitgestellt werden wie Apache Spark und Apache Hadoop TODO.
-\subsection{Nähe zum GQL standard der vorgestellten Sprachen}
-Im prinzip konkuieren hier nur openCypher TODO und Gremlin TODO, da SPARQL nicht 
-Datenmodell von propertiers Graphdaten abbildet. openCypher ist wie bereits mehrfach 
-erwähnt sehr nahe an GQL standard angelehnt, man könnte auch sagen der GQL 
-standard basiert im Wesentlichen auf openCypher.
+\section{Executive summary}
+\label{sec:conclusion:executive_summary}
+In the TODO chapter, openCypher or Cypher was introduced as the first language. 
+Cypher is distributed by Neo4J as part of a database management system for graph databases TODO. 
+Other major providers such as AWS TODO also offer graph databases 
+that can be queried or operated using the syntax of openCypher.
+Essential parts of openCypher have made it into the GQL standard. The syntax is, 
+with a few exceptions, identical to TODO. Since it is to be expected that, 
+as in the case of SQL TODO, the query languages for graph databases will continue 
+to converge with the standard, it seems worthwhile to rely on technologies 
+that come very close to the GQL standard or map large parts of it. \\
+SparQL is designed for the specific purpose of queries related to the Semantic Web 
+and thus fulfills a different use case or is not designed for the data model of property graph data but, 
+as has been shown, can be applied to such data TODO.
 
-\section{Abschließende Bewertung und Ausblick}
-Grundsätzlich sind alle vorgestellten Sprachen dafür ausgelegt auch großen Mengen 
-von Graph Daten oder graph ähnliche Strukturen (TODO) zu durchsuchen und zu bearbeiten.
-openCypher erscheint als die Sprache die im Kontext von reinen Graphdaten die Sprache zu sein,
-die genau auf diesen Use Case zugeschnitten ist. Die Syntax ist sehr intuitiv und im prinzip
-genau so gestalltet wie man es erwartet, wenn man sich die Strukturen von Graphen bestehend 
-aus Knoten und Kanten vorstellt.
-Durch die starke Nähe zum GQL standard ist gewährleistet, dass die Konzepte und die 
-syntax von openCypher auch zukünftig relevant sind.
-Die nahtlose Integration von Gremlin in die bereits erwähnten Big Data technologies 
-lässt auch diese Sprache hinreichend generisch erscheinen, auch wenn sie mit dem 
-industry Standard nur entfernt kompatibel oder gleichzusetzen ist. 
-SparQL folgt einem spezifischen Use Case und einer propriertäten Datenstruktur. 
-Die Relevant von SPARQL ist stark mit der Relevanz des Semantic Web verbunden.
-Im Kontext von reinen Graphdatenbanken ist davon auszugehen, dass die Konzepte von 
-openCypher weiter an Relevanz gewinnen und die Anbieter von kommerziellen Produkten
-in diesem Bereich die standardisierung in die bereits eingeschlagenen Richtung 
-weiter vorantreiben.
+\subsection{Expressiveness of the presented languages}
+\label{subsec:conclusion:executive_summary:expressiveness}
+All the languages presented reflect the benchmark for expressiveness from TODO 
+and can be described as equivalent in relation to this benchmark.
+
+\subsection{Options for optimizing the performance of the presented languages}
+\label{subsec:conclusion:executive_summary:performance}
+openCypher offers direct possibilities to optimize the performance of the underlying database 
+as the language is to be understood as part of a database system.
+Gremlin and SPARQL only offer options for evaluating the performance of queries and 
+improve these by switching to filter-first strategies, for example.
+\subsection{Interoperability of the presented languages}
+\label{subsec:conclusion:executive_summary:interoperability}
+All languages also offer good interoperability with important systems,
+and programming languages such as Python and Java TODO, 
+It is noticeable that Gremlin, as part of the Apache Foundation, is specifically connected to important
+systems in the context of big data, which are also provided by the Apache Foundation
+such as Apache Spark and Apache Hadoop TODO.
+\subsection{Closeness to the GQL standard of the presented languages}
+\label{subsec:conclusion:executive_summary:iso}
+In general, only openCypher TODO and Gremlin TODO are concurrent here, since SPARQL does not map the 
+data model of propertiers graph data. As already mentioned several times, 
+openCypher is very close to the GQL standard, 
+you could also say that the GQL standard is essentially based on openCypher.
+
+\section{Final review and outlook}
+In general, all the presented languages are designed to search and process large volumes 
+of graph data or graph-like structures (TODO).
+openCypher seems to be the language to use in the context of pure graph data, 
+that is exactly tailored to this use case.
+The close alignment with the GQL standard ensures that the concepts and syntax of openCypher 
+will continue to be relevant in the future.
+The seamless integration of Gremlin into the previously mentioned big data technologies 
+also makes this language appear sufficiently generic, even if it is only slightly compatible with the 
+industry standard GQL. 
+SparQL follows a specific use case and a dedicated data structure. 
+The relevance of SPARQL is strongly related to the relevance of the Semantic Web.
+In the context of pure graph databases, it can be assumed that the concepts of openCypher 
+will continue to gain relevance and that the providers of commercial products in this sector 
+will continue to drive standardization in the direction already taken.
 
 
 
