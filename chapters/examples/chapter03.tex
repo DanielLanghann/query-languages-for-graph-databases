@@ -1,0 +1,172 @@
+\chapter{The GQL standard}
+\label{ch:iso}
+\section{Overview of the GQL standard}
+\label{sec:iso:overview}
+In short, GQL is a new standard for a property graph database language developed by 
+the ISO committee.
+It is the first time in more than 35 years, that the ISO released a new 
+standard for database query language \citep{hare_isoiec_2024}.
+In opposite to SQL, where data is organized in tables, graph databases structure data in graphs . 
+This enables new ways to analyze and recognize patterns in very large amounts of 
+data without having specific knowledge about the data itself \citep{PINO2024100997}.
+Various use cases for graph databases have already been mentioned in chapter \ref{sec:intro:research_topic}, 
+one other interesting example can be found in \citep{SAAD2023136344}.
+
+\section{Scope of the GQL standard}
+\label{sec:iso:scope}
+Graph databases store and retrieve nodes (vertexes) and
+edges between nodes (relationships). GQL is a delclarative language influenced both by 
+existing property graph database products and by the SQL standard.
+The GQL standard is a complete database language that supports, creating, reading
+updating, deleting and modifying property graph data \citep{hare_isoiec_2024}. \\
+Graph data can be organized in two different ways, Schema free or constrained by an database administrator.
+Schema free graph data has no restrictions for adding and changing graph data.
+Graph data that is subject to a predefined schema must fulfill this at all times, 
+otherwise an error is triggered \citep{WIHARJA2020100616}.\\
+The schema of graph data is specified via so-called graph types, 
+which on the one hand specify the structure of the nodes as well as that of the edges, 
+i.e. the relationships between the nodes \citep{hare_isoiec_2024}.
+
+\section{Examples of common GQL query operations}
+\label{sec:iso:examples}
+This chapter provides a brief introduction to GQL capabilities including, 
+Queries and \ac{GPM}, Add, modify and delete operations.
+
+\subsection{Queries and Graph Pattern Matching}
+\label{subsec:iso:examples:queries_and_graph_pattern_matching}
+GQL queries are based on rich GPM language.
+The below example findes all nodes with a one-hop relationship to a node with a 
+with a specific \textit{productId} \citep{hare_isoiec_2024}:
+\begin{lstlisting}[caption={Example for one hop graph pattern query}, label={lst:createOneHopGraph}]
+    {
+       MATCH (a {productId: "6594301c4aa9b3232889e7c3"}) - [b] -> (c)
+	   RETURN a, b, c
+
+    }
+\end{lstlisting}
+The GQL standard does not define how the returned data has to be displayed
+to the user. Two possible ways can be, Graph Data Visualization tools and Textoutput.
+
+
+\subsection{Quantified graph patterns}
+\label{subsec:iso:examples:quantified_path_patterns}
+The GPM of GQL also provides capabilities for \ac{QGP} \citep{fan_adding_2016}.
+The following example finds all paths where one node is related to another node
+up to ten hops:
+\begin{lstlisting}[caption={Example for quantified graph pattern}, label={lst:createQuantifiedGraph}]
+    MATCH((a)-[r]->(b)){1,10}
+	RETURN a, r, b
+\end{lstlisting}
+More complex QGP are possible.
+
+\subsection{Complex Graph pattern}
+The listing \ref{lst:benchmark} matches pattern
+with nodes of type \textit{Person} and \textit{Company}. 
+The relationships between the nodes are \textit{worksFor} and \textit{partnerOf}. 
+The matching pattern:
+\begin{lstlisting}
+    MATCH (person:Person)-[r1:worksFor]->(company:Company)-[r2:partnerOf]->(partner:Company)
+\end{lstlisting}
+matches a pattern where a \textit{Person} works for a \textit{Company} and that 
+\textit{Company} has a partnership with another \textit{Company}.
+The filter of the query:
+\begin{lstlisting}
+	WHERE person.age > 25 AND company.revenue > 100000
+\end{lstlisting}
+filters all persons with an age > 25 and companys with a revenue > 100000.
+The part or WITH-Clause
+\begin{lstlisting}
+	WITH person, company, partner, COUNT(r1) AS work_relationships, COLLECT(r2) AS partneRelationships
+\end{lstlisting}
+aggregates the number of \textit{worksFor} relationships and collects the 
+\textit{partnerOf} relationships for further use in the query in the second match pattern:
+\begin{lstlisting}
+	MATCH (person)-[r3:knows]->(colleague:Person)
+	WHERE colleague.age < 30
+\end{lstlisting}
+\newpage
+
+\subsection{Insert, Update and Delete operations}
+\label{subsec:iso:examples:insert_update_and_delete_operations}
+The following examplein listing \ref{lst:insertStatement} shows a typical insert statement in GQL:
+\begin{lstlisting}[caption={Typical insert statement in GQL}, label={lst:insertStatement}]
+    /*Insert one node */
+	INSERT (:Customer {name: 'XYZ Ltd.', customerStatus: 'Active'})
+\end{lstlisting}
+In this example \textit{Customer} is a Label and \textit{name} and \textit{customerStatus}
+are properties.\newline
+Labels are identifiers that are either present or not present.
+Properties are Key-Value pairs.\newline
+Both nodes and relationships can have labels and properties \citep{PINO2024100997}.
+Basically, nodes are enclosed in parenthesis:
+\begin{lstlisting}
+	(:Person {firstName: 'Daniel', lastName: 'Langhann'})
+\end{lstlisting}
+and relationships (edges) are enclosed in square brackets:
+\begin{lstlisting}
+	 [:r3:knows]
+\end{lstlisting}
+GQL supports insert operations for complex graph pattern like listing \ref{lst:complexInsertStatement}.
+The statement in listing \ref{lst:complexInsertStatement} inserts two nodes \textit{Customer} and
+\textit{City} and the relationship \textit{located}.\newline
+Insert operations as shown in Listing \ref{lst:edgeInsertStatement} can also be the result of a \textit{MATCH} pattern:
+\begin{lstlisting}[caption={Pattern based insert statement}, label={lst:edgeInsertStatement}] 
+	/*Creates an edge isStudentOf. */
+	MATCH (a {name: 'Langhann'}), (b {name: 'Stoerl'})
+	INSERT (a)-[:isStudentOf]->(b)
+\end{lstlisting}
+In the Listing \ref{lst:edgeInsertStatement} the variables \textit{a} and \textit{b} are
+aliases.\newline They are defined in the \textit{MATCH} clause and are only part of the Memory until
+the Query determines.\newline 
+The result of the  \textit{MATCH} caluse in listing \ref{lst:edgeInsertStatement} is a \textbf{cartesian product} of the two nodes.
+This is why each node expression returns only one node. The \textit{INSERT} statement will only insert one edge.\newline
+An Update in GQL is done by identififying the nodes or edges to be updated.
+After identififying the instances the user can set or remove properties (listing \ref{lst:updateStatement}):
+\begin{lstlisting}[caption={Update statements in GQL}, label={lst:updateStatement}] 
+	/*Update*/
+	MATCH (d:Customer) where d.id = '6594301c4aa9b3232889e7c3'
+	SET d.status='inactive'
+\end{lstlisting}
+The following listing \ref{lst:removeStatement} removes the properties of a node \textit{Customer}:
+\begin{lstlisting}[caption={Delete propteries in GQL}, label={lst:removeStatement}] 
+	/*Remove propertiers*/
+	MATCH (d:Customer) where d.id = '6594301c4aa9b3232889e7c3'
+	REMOVE d.invoiceAccepted
+\end{lstlisting}
+In listing \ref{lst:deleteStatement} a node and the related nodes where deleted:
+\begin{lstlisting}[caption={Remove nodes in GQL cascading}, label={lst:deleteStatement}] 
+	/*Delete Customer and related Nodes*/
+	MATCH  (a {id: '6594301c4aa9b3232889e7c3'})-[b]->(c)
+	DETACH DELETE a,c
+\end{lstlisting}
+\section{Transactions}
+\label{sec:iso:transactions}
+In GQL serializable transactions and their additional implmentation-defined transaction modes 
+are supported.
+Transactions are starting with either an \textbf{explicit} or \textbf{implicit} \textit{START TRANSACTION}
+statement and terminated with either a \textit{COMMIT} or \textit{ROLLBACK}.
+The user can also  implement automatic transactions starts and commits \citep{hare_isoiec_2024}.
+
+\section{Schema free vs graph types}
+\label{sec:iso:schema_free_vs_graph_types}
+A schema free graph accepts any form of graph data which makes it relatively fast to use. 
+But on the other hand it gives the user control over the data 
+and therefore a certain amount of data proliferation is accepted and has to be managed \\
+A graph type is a kind of template that specifies the structure of the graph, which must be adhered to at all times.
+The structure of the nodes as well as the edges or both can be specified \citep{10565888}.
+The listing \ref{lst:graphType} illustrates the concept of a graph type.
+If the user is creating a graph by using a graph type, the contents of the nodes and edges 
+are constrained by the graph type, which makes sure the data model will be respected in 
+all transactions. This is also relevant for update operations. If an update operation does 
+not follow the restrictions of the graph type, the transactin will be rolled back and 
+the database system will throw an error \citep{10565888}.
+
+\section{Compare graph structured data and tables}
+\label{sec:iso:compare_graph_structured_data_and_tables}
+In a typical SQL database, data is organized and stored in tables and rows where each 
+table has a fixed schema.
+Relationships between tables are basically defined as so called Foreign Keys \citep{1702016}.
+The user of the database has to know and understand these relationships to be able
+to write queries over more than one table.\newline
+In a property graph database, the level of abstraction is high, and allows the user 
+whole sets of tables to treat as one unit, which can be understand as a data product \citep{PINO2024100997}.

@@ -1,0 +1,1515 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{aws_openCypher_2024}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=AWSA}{%
+         family={Amazon Web\bibnamedelima Services},
+         familyi={A\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim S\bibinitperiod},
+         given={AWS},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AWSA1}
+    \strng{fullhash}{AWSA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{AWS24}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{Accessing the Neptune Graph with {openCypher}}
+    \verb{url}
+    \verb https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-ope
+    \verb ncypher.html
+    \endverb
+    \field{journaltitle}{AWS}
+    \field{month}{06}
+    \field{year}{2024}
+    \field{urlday}{24}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{bach_testing_2022}{article}{}
+    \name{author}{27}{}{%
+      {{hash=BT}{%
+         family={Bach},
+         familyi={B\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=AA}{%
+         family={Andrzejak},
+         familyi={A\bibinitperiod},
+         given={Artur},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Seo},
+         familyi={S\bibinitperiod},
+         given={Changyun},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=BC}{%
+         family={Bierstedt},
+         familyi={B\bibinitperiod},
+         given={Christian},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=LC}{%
+         family={Lemke},
+         familyi={L\bibinitperiod},
+         given={Christian},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Ritter},
+         familyi={R\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=HDW}{%
+         family={Hwang},
+         familyi={H\bibinitperiod},
+         given={Dong\bibnamedelima Won},
+         giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=SE}{%
+         family={Sheshi},
+         familyi={S\bibinitperiod},
+         given={Erda},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=SF}{%
+         family={Schabernack},
+         familyi={S\bibinitperiod},
+         given={Felix},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=RF}{%
+         family={Renkes},
+         familyi={R\bibinitperiod},
+         given={Frank},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=GG}{%
+         family={Gaumnitz},
+         familyi={G\bibinitperiod},
+         given={Gordon},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Martens},
+         familyi={M\bibinitperiod},
+         given={Jakob},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=HL}{%
+         family={Hoemke},
+         familyi={H\bibinitperiod},
+         given={Lars},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=FM}{%
+         family={Felderer},
+         familyi={F\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Rudolf},
+         familyi={R\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=JN}{%
+         family={Jambigi},
+         familyi={J\bibinitperiod},
+         given={Neetha},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={May},
+         familyi={M\bibinitperiod},
+         given={Norman},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=JR}{%
+         family={Joy},
+         familyi={J\bibinitperiod},
+         given={Robin},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Scheja},
+         familyi={S\bibinitperiod},
+         given={Ruben},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Schwedes},
+         familyi={S\bibinitperiod},
+         given={Sascha},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Seibel},
+         familyi={S\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Seifert},
+         familyi={S\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Haas},
+         familyi={H\bibinitperiod},
+         given={Stefan},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=KS}{%
+         family={Kraft},
+         familyi={K\bibinitperiod},
+         given={Stephan},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=KT}{%
+         family={Kroll},
+         familyi={K\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ST}{%
+         family={Scheuer},
+         familyi={S\bibinitperiod},
+         given={Tobias},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=LW}{%
+         family={Lehner},
+         familyi={L\bibinitperiod},
+         given={Wolfgang},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BT+1}
+    \strng{fullhash}{BTAASCBCLCRDHDWSESFRFGGMJHLFMRMJNMNJRSRSSSSSSHSKSKTSTLW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Bac+22}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Software Testing is an established activity in the software development process to ensure and improve the quality of a software. Consequently, there exists a wide range of literature, popular information, and even multiple ISO standards covering this topic. However, we found that testing very large database management systems (DBMS) requires special adaptations of the generally available guidance for software testing and requires to solve specific challenges that may not be relevant for other areas or smaller software projects. We therefore discuss the testing of SAP HANA, a very large software project with millions of lines of code, to share insights about our approach, best practices, and unsolved challenges that are open for further research.%
+    }
+    \verb{doi}
+    \verb 10.1007/s13222-022-00426-x
+    \endverb
+    \field{issn}{1610-1995}
+    \field{number}{3}
+    \field{pages}{195\bibrangedash 215}
+    \field{title}{Testing {Very} {Large} {Database} {Management} {Systems}: {The} {Case} of {SAP} {HANA}}
+    \verb{url}
+    \verb https://doi.org/10.1007/s13222-022-00426-x
+    \endverb
+    \field{volume}{22}
+    \field{journaltitle}{Datenbank-Spektrum}
+    \field{month}{11}
+    \field{year}{2022}
+  \endentry
+
+  \entry{BARCELO2017164}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BP}{%
+         family={Barceló},
+         familyi={B\bibinitperiod},
+         given={Pablo},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=FG}{%
+         family={Fontaine},
+         familyi={F\bibinitperiod},
+         given={Gaëlle},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \keyw{Graph databases, Regular path queries, Consistent query answering, Description logics, Rewrite systems}
+    \strng{namehash}{BPFG1}
+    \strng{fullhash}{BPFG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BF17}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{abstract}{%
+    Applications of graph databases are prone to inconsistency due to interoperability issues. This raises the need for studying query answering over inconsistent graph databases in a simple but general framework. We follow the approach of consistent query answering (CQA), and study its data complexity over graph databases for conjunctive regular-path queries (CRPQs) and conjunctive regular-path constraints (CRPCs). We deal with subset, superset and symmetric-difference repairs. Without restrictions, CQA is undecidable for the semantics of superset- and symmetric-difference repairs, and Π2P-complete for subset-repairs. However, we identify restrictions on CRPCs and databases that lead to decidability, and even tractability of CQA.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jcss.2017.03.015
+    \endverb
+    \field{issn}{0022-0000}
+    \field{pages}{164\bibrangedash 194}
+    \field{title}{On the data complexity of consistent query answering over graph databases}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0022000017300521
+    \endverb
+    \field{volume}{88}
+    \field{journaltitle}{Journal of Computer and System Sciences}
+    \field{year}{2017}
+  \endentry
+
+  \entry{barcelo_expressive_2012}{article}{}
+    \name{author}{4}{}{%
+      {{hash=BP}{%
+         family={Barceló},
+         familyi={B\bibinitperiod},
+         given={Pablo},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Libkin},
+         familyi={L\bibinitperiod},
+         given={Leonid},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=LA}{%
+         family={Lin},
+         familyi={L\bibinitperiod},
+         given={Anthony},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=WP}{%
+         family={Wood},
+         familyi={W\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BP+1}
+    \strng{fullhash}{BPLLLAWP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Bar+12}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \verb{doi}
+    \verb 10.1145/2389241.2389250
+    \endverb
+    \field{pages}{31}
+    \field{title}{A {Expressive} {Languages} for {Path} {Queries} over {Graph}-{Structured} {Data}}
+    \field{volume}{37}
+    \field{journaltitle}{ACM Transactions on Database Systems}
+    \field{month}{12}
+    \field{year}{2012}
+  \endentry
+
+  \entry{10.1145/3591366.3591376}{inbook}{}
+    \name{author}{3}{}{%
+      {{hash=BLT}{%
+         family={Berners-Lee},
+         familyi={B\bibinithyphendelim L\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=HJ}{%
+         family={Hendler},
+         familyi={H\bibinitperiod},
+         given={James},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LO}{%
+         family={Lassila},
+         familyi={L\bibinitperiod},
+         given={Ora},
+         giveni={O\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Association for Computing Machinery}%
+    }
+    \strng{namehash}{BLTHJLO1}
+    \strng{fullhash}{BLTHJLO1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BLHL23}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{booktitle}{Linking the World’s Information: Essays on Tim Berners-Lee’s Invention of the World Wide Web}
+    \field{edition}{1}
+    \field{isbn}{9798400707940}
+    \field{pages}{91–103}
+    \field{title}{The Semantic Web: A New Form of Web Content that is Meaningful to Computers will Unleash a Revolution of New Possibilities}
+    \verb{url}
+    \verb https://doi.org/10.1145/3591366.3591376
+    \endverb
+    \list{location}{1}{%
+      {New York, NY, USA}%
+    }
+    \field{year}{2023}
+  \endentry
+
+  \entry{CABRAL2023102165}{article}{}
+    \name{author}{4}{}{%
+      {{hash=CJVL}{%
+         family={Cabral},
+         familyi={C\bibinitperiod},
+         given={João Vitor\bibnamedelima Lopes},
+         giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=NVER}{%
+         family={Noguera},
+         familyi={N\bibinitperiod},
+         given={Viviana Elizabeth\bibnamedelima Romero},
+         giveni={V\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=CRR}{%
+         family={Ciferri},
+         familyi={C\bibinitperiod},
+         given={Ricardo\bibnamedelima Rodrigues},
+         giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=LD}{%
+         family={Lucrédio},
+         familyi={L\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \keyw{NoSQL databases, Model management, Code generation, Query rewriting, Entity-Relationship algebra}
+    \strng{namehash}{CJVL+1}
+    \strng{fullhash}{CJVLNVERCRRLD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Cab+23}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.is.2023.102165
+    \endverb
+    \field{issn}{0306-4379}
+    \field{pages}{102165}
+    \field{title}{Enabling schema-independent data retrieval queries in MongoDB}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0306437923000017
+    \endverb
+    \field{volume}{114}
+    \field{journaltitle}{Information Systems}
+    \field{year}{2023}
+  \endentry
+
+  \entry{1702016}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CS}{%
+         family={Ceri},
+         familyi={C\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=GG}{%
+         family={Gottlob},
+         familyi={G\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \keyw{Algebra;Database languages;Query processing;Production;Calculus;Database systems;Relational databases;Formal languages;Proposals;Program translation;query equivalence;query languages;query optimization;relational algebra;relational database model;SQL}
+    \strng{namehash}{CSGG1}
+    \strng{fullhash}{CSGG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{CG85}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \verb{doi}
+    \verb 10.1109/TSE.1985.232223
+    \endverb
+    \field{number}{4}
+    \field{pages}{324\bibrangedash 345}
+    \field{title}{Translating SQL Into Relational Algebra: Optimization, Semantics, and Equivalence of SQL Queries}
+    \field{volume}{SE-11}
+    \field{journaltitle}{IEEE Transactions on Software Engineering}
+    \field{year}{1985}
+  \endentry
+
+  \entry{10565888}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CHN}{%
+         family={Chaudhry},
+         familyi={C\bibinitperiod},
+         given={Hassan\bibnamedelima Nazeer},
+         giveni={H\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Rossi},
+         familyi={R\bibinitperiod},
+         given={Matteo},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \keyw{Optimization;Real-time systems;Query processing;Social networking (online);Databases;Data structures;Transportation;Graph data structures;Distributed Computations;Vertex-Centric computations;Temporal Pattern Recognition;Query Optimization;Dynamic graph computations}
+    \strng{namehash}{CHNRM1}
+    \strng{fullhash}{CHNRM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{CR24}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2024.3417352
+    \endverb
+    \field{pages}{1\bibrangedash 1}
+    \field{title}{Optimising queries for pattern detection over large scale temporally evolving graphs}
+    \field{journaltitle}{IEEE Access}
+    \field{year}{2024}
+  \endentry
+
+  \entry{7231397}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=DESS}{%
+         family={Dongoran},
+         familyi={D\bibinitperiod},
+         given={Emir Septian\bibnamedelima Sori},
+         giveni={E\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=RSWK}{%
+         family={Rahmat\bibnamedelima Saleh},
+         familyi={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+         given={W.\bibnamedelima Kemas},
+         giveni={W\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=GAA}{%
+         family={Gozali},
+         familyi={G\bibinitperiod},
+         given={Alfian\bibnamedelima Akbar},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \keyw{Filtering;Fingerprint recognition;Testing;Indexing;Matrix converters;graph indexing;GraphGrep;subgraph matching;backtrack;Ullman}
+    \strng{namehash}{DESSRSWKGAA1}
+    \strng{fullhash}{DESSRSWKGAA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{DRSG15}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{booktitle}{2015 3rd International Conference on Information and Communication Technology (ICoICT)}
+    \verb{doi}
+    \verb 10.1109/ICoICT.2015.7231397
+    \endverb
+    \field{pages}{59\bibrangedash 64}
+    \field{title}{Analysis and implementation of graph indexing for graph database using GraphGrep algorithm}
+    \field{year}{2015}
+  \endentry
+
+  \entry{duckham_matt_gis_2024}{book}{}
+    \name{author}{3}{}{%
+      {{hash=DM}{%
+         family={Duckham},
+         familyi={D\bibinitperiod},
+         given={Matt},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SQ}{%
+         family={Sun},
+         familyi={S\bibinitperiod},
+         given={Qian},
+         giveni={Q\bibinitperiod},
+      }}%
+      {{hash=WMF}{%
+         family={Worboys},
+         familyi={W\bibinitperiod},
+         given={Michael\bibnamedelima F.},
+         giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {CRC Press}%
+    }
+    \strng{namehash}{DMSQWMF1}
+    \strng{fullhash}{DMSQWMF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{DSW24}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{edition}{3}
+    \field{isbn}{0.1201/9780429168093-2}
+    \field{title}{{GIS} {A} {Computing} {Perspective}}
+    \list{location}{1}{%
+      {London}%
+    }
+    \field{year}{2024}
+  \endentry
+
+  \entry{fan_adding_2016}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FW}{%
+         family={Fan},
+         familyi={F\bibinitperiod},
+         given={Wenfei},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=WY}{%
+         family={Wu},
+         familyi={W\bibinitperiod},
+         given={Yinghui},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=XJ}{%
+         family={Xu},
+         familyi={X\bibinitperiod},
+         given={Jingbo},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{language}{1}{%
+      {en}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{FWWYXJ1}
+    \strng{fullhash}{FWWYXJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{FWX16}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{booktitle}{Proceedings of the 2016 {International} {Conference} on {Management} of {Data}}
+    \verb{doi}
+    \verb 10.1145/2882903.2882937
+    \endverb
+    \field{isbn}{978-1-4503-3531-7}
+    \field{pages}{1215\bibrangedash 1230}
+    \field{title}{Adding {Counting} {Quantifiers} to {Graph} {Patterns}}
+    \verb{url}
+    \verb https://dl.acm.org/doi/10.1145/2882903.2882937
+    \endverb
+    \list{location}{1}{%
+      {San Francisco California USA}%
+    }
+    \verb{file}
+    \verb Volltext:/Users/daniellanghann/Zotero/storage/42VJRPGF/Fan et al. - 2
+    \verb 016 - Adding Counting Quantifiers to Graph Patterns.pdf:application/p
+    \verb df
+    \endverb
+    \field{month}{06}
+    \field{year}{2016}
+    \field{urlday}{27}
+    \field{urlmonth}{05}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{hare_isoiec_2024}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=HKW}{%
+         family={Hare},
+         familyi={H\bibinitperiod},
+         given={Keith\bibnamedelima W.},
+         giveni={K\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HKW1}
+    \strng{fullhash}{HKW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Har24}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{title}{{ISO}/{IEC} 39075:2024 {Information} {Technology} – {Database} languages}
+    \verb{url}
+    \verb https://jtc1info.org/slug/gql-database-language/
+    \endverb
+    \field{month}{04}
+    \field{year}{2024}
+    \field{urlday}{28}
+    \field{urlmonth}{04}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{gremlin_chaos_nodate}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=IG}{%
+         family={Inc.},
+         familyi={I\bibinitperiod},
+         given={Gremlin},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IG1}
+    \strng{fullhash}{IG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Inc}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \field{abstract}{%
+    Chaos Engineering on AWS%
+    }
+    \field{title}{Chaos {Engineering} on {AWS}}
+    \verb{url}
+    \verb https://www.gremlin.com/aws
+    \endverb
+    \field{journaltitle}{Chaos Engineering on AWS}
+    \field{urlday}{24}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{KUMAR2024100308}{article}{}
+    \name{author}{4}{}{%
+      {{hash=KS}{%
+         family={Kumar},
+         familyi={K\bibinitperiod},
+         given={Saurav},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=DD}{%
+         family={Deepika},
+         familyi={D\bibinitperiod},
+         given={Deepika},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SK}{%
+         family={Slater},
+         familyi={S\bibinitperiod},
+         given={Karin},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Kumar},
+         familyi={K\bibinitperiod},
+         given={Vikas},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \keyw{Adverse outcome pathway, Large language model, Graph database, Risk assessment, Artificial intelligence, Data integration, Information retrieval, Information extraction}
+    \strng{namehash}{KS+1}
+    \strng{fullhash}{KSDDSKKV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Kum+24}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{abstract}{%
+    Adverse Outcome Pathways (AOPs) provide a basis for non-animal testing, by outlining the cascade of molecular and cellular events initiated upon stressor exposure, leading to adverse effects. In recent years, the scientific community has shown interest in developing AOPs through crowdsourcing, with the results archived in the AOP-Wiki: a centralized repository coordinated by the OECD, hosting nearly 512 AOPs (April, 2023). However, the AOP-Wiki platform currently lacks a versatile querying system, which hinders developers' exploration of the AOP network and impedes its practical use in risk assessment. This work proposes to unleash the full potential of the AOP-Wiki archive by adapting its data into a Labelled Property Graph (LPG) schema. Additionally, the tool offers a visual network query interface for both database-specific and natural language queries, facilitating the retrieval and analysis of graph data. The multi-query interface allows non-technical users to construct flexible queries, thereby enhancing the potential for AOP exploration. By reducing the time and technical requirements, the present query engine enhances the practical utilization of the valuable data within AOP-Wiki. To evaluate the platform, a case study is presented with three levels of use-case scenarios (simple, moderate, and complex queries). AOPWIKI-EXPLORER is freely available on GitHub (https://github.com/Crispae/AOPWiki_Explorer) for wider community reach and further enhancement.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.comtox.2024.100308
+    \endverb
+    \field{issn}{2468-1113}
+    \field{pages}{100308}
+    \field{title}{AOPWIKI-EXPLORER: An interactive graph-based query engine leveraging large language models}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S2468111324000100
+    \endverb
+    \field{volume}{30}
+    \field{journaltitle}{Computational Toxicology}
+    \field{year}{2024}
+  \endentry
+
+  \entry{10391694}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=LA}{%
+         family={Lopes},
+         familyi={L\bibinitperiod},
+         given={André},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Rodrigues},
+         familyi={R\bibinitperiod},
+         given={Diogo},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Saraiva},
+         familyi={S\bibinitperiod},
+         given={João},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=AM}{%
+         family={Abbasi},
+         familyi={A\bibinitperiod},
+         given={Maryam},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MP}{%
+         family={Martins},
+         familyi={M\bibinitperiod},
+         given={Pedro},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=WC}{%
+         family={Wanzeller},
+         familyi={W\bibinitperiod},
+         given={Cristina},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \keyw{Performance evaluation;Scalability;Memory management;Loading;Random access memory;Database systems;Time factors;Graph databases;Performance evaluation;Scalability analysis;Database management systems (DBMS);Neo4j;Data handling efficiency}
+    \strng{namehash}{LA+1}
+    \strng{fullhash}{LARDSJAMMPWC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Lop+23}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{booktitle}{2023 Second International Conference On Smart Technologies For Smart Nation (SmartTechCon)}
+    \verb{doi}
+    \verb 10.1109/SmartTechCon57526.2023.10391694
+    \endverb
+    \field{pages}{537\bibrangedash 542}
+    \field{title}{Scalability and Performance Evaluation of Graph Database Systems: A Comparative Study of Neo4j, JanusGraph, Memgraph, NebulaGraph, and TigerGraph}
+    \field{year}{2023}
+  \endentry
+
+  \entry{MONDAL2020103549}{article}{}
+    \name{author}{3}{}{%
+      {{hash=MS}{%
+         family={Mondal},
+         familyi={M\bibinitperiod},
+         given={Safikureshi},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Basu},
+         familyi={B\bibinitperiod},
+         given={Anwesha},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={Mukherjee},
+         familyi={M\bibinitperiod},
+         given={Nandini},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \keyw{, relationship, data model, , ,}
+    \strng{namehash}{MSBAMN1}
+    \strng{fullhash}{MSBAMN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{MBM20}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{abstract}{%
+    In healthcare applications, developing a data model for storing patient–doctor relationships is important. Though relational models are popular for many commercial and business applications, they may not be appropriate for modeling patient–doctor relationships due to their inherent irregular nature and complexities. In this paper, as a case study, we propose to build a doctor recommendation system for the patients. The recommendation system is built on top of a multilayer graph data model. Contemporary research papers have already shown that multilayer graph data models can be efficiently used in many applications where large, heterogeneous data are to be modeled. As part of the recommendation system, the paper also introduces a concept of trust which is one important ingredient of any kind of recommendation. The trust factor introduced in the paper exploits certain characteristics of the multilayer graph model. The paper also presents some analysis to demonstrate the efficiency of the graph data model in comparison with relational data model.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jbi.2020.103549
+    \endverb
+    \field{issn}{1532-0464}
+    \field{pages}{103549}
+    \field{title}{Building a trust-based doctor recommendation system on top of multilayer graph database}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S1532046420301775
+    \endverb
+    \field{volume}{110}
+    \field{journaltitle}{Journal of Biomedical Informatics}
+    \field{year}{2020}
+  \endentry
+
+  \entry{DBLP:journals/corr/NaackeCA16}{article}{}
+    \name{author}{3}{}{%
+      {{hash=NH}{%
+         family={Naacke},
+         familyi={N\bibinitperiod},
+         given={Hubert},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=CO}{%
+         family={Cur{\'{e}}},
+         familyi={C\bibinitperiod},
+         given={Olivier},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=AB}{%
+         family={Amann},
+         familyi={A\bibinitperiod},
+         given={Bernd},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{NHCOAB1}
+    \strng{fullhash}{NHCOAB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{NCA16}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \verb{eprint}
+    \verb 1604.08903
+    \endverb
+    \field{title}{{SPARQL} query processing with Apache Spark}
+    \verb{url}
+    \verb http://arxiv.org/abs/1604.08903
+    \endverb
+    \field{volume}{abs/1604.08903}
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{year}{2016}
+  \endentry
+
+  \entry{noauthor_neo4j_223}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Noa}
+    \field{extraalpha}{1}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{title}{{Neo4J}}
+    \verb{url}
+    \verb https://neo4j.com/
+    \endverb
+    \field{journaltitle}{Neo4J}
+    \field{year}{223}
+    \field{urlday}{23}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{PATIL2024102683}{article}{}
+    \name{author}{6}{}{%
+      {{hash=PA}{%
+         family={Patil},
+         familyi={P\bibinitperiod},
+         given={Ayushi},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MS}{%
+         family={Mahajan},
+         familyi={M\bibinitperiod},
+         given={Shreya},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Menpara},
+         familyi={M\bibinitperiod},
+         given={Jinal},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=WS}{%
+         family={Wagle},
+         familyi={W\bibinitperiod},
+         given={Shivali},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=PP}{%
+         family={Pareek},
+         familyi={P\bibinitperiod},
+         given={Preksha},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=KK}{%
+         family={Kotecha},
+         familyi={K\bibinitperiod},
+         given={Ketan},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \keyw{Fintech, Bank transactions, Machine learning algorithms, Fraud detection, Online banking}
+    \strng{namehash}{PA+1}
+    \strng{fullhash}{PAMSMJWSPPKK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Pat+24}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{abstract}{%
+    The banking sector's shift from traditional physical locations to digital channels has offered customers unprecedented convenience and increased the risk of fraud for customers and institutions alike. In this study, we discuss the pressing need for robust fraud detection & prevention systems in the context of evolving technological environments. We introduce a graph-based machine learning model that is specifically designed to detect fraudulent activity in various types of banking operations, such as credit card transactions, debit card transactions, and online banking transactions. This model uses advanced methods for anomalies, behaviors, and patterns to analyze past transactions and user behavior almost immediately. We provide an in-depth methodology for evaluating fraud detection systems based on parameters such as Accuracy Recall rate and False positive rate ROC curves. The findings can be used by financial institutions to develop and enhance fraud detection strategies as they demonstrate the effectiveness and reliability of the proposed approach. This study emphasizes the critical role that innovative technologies play in safeguarding the financial sector from the ever-changing strategies of fraudsters while also enhancing banking security.•This paper aims to implement the detection of fraudulent transactions using a state-of-the-art Graph Database approach.•The relational graph of features in the dataset used is modelled using Neo4J as a graph database.•Applying JSON features from the exported graph to various Machine Learning models, giving effective outcomes.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.mex.2024.102683
+    \endverb
+    \field{issn}{2215-0161}
+    \field{pages}{102683}
+    \field{title}{Enhancing fraud detection in banking by integration of graph databases with machine learning}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S2215016124001377
+    \endverb
+    \field{volume}{12}
+    \field{journaltitle}{MethodsX}
+    \field{year}{2024}
+  \endentry
+
+  \entry{PINO2024100997}{article}{}
+    \name{author}{4}{}{%
+      {{hash=PE}{%
+         family={Pino},
+         familyi={P\bibinitperiod},
+         given={Elvira},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=OF}{%
+         family={Orejas},
+         familyi={O\bibinitperiod},
+         given={Fernando},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={Mylonakis},
+         familyi={M\bibinitperiod},
+         given={Nikos},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=PE}{%
+         family={Pasarella},
+         familyi={P\bibinitperiod},
+         given={Edelmira},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \keyw{Graph databases, Query languages, Logic of graphs}
+    \strng{namehash}{PE+1}
+    \strng{fullhash}{PEOFMNPE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Pin+24}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{abstract}{%
+    Graph databases are now playing an important role because they allow us to overcome some limitations of relational databases. In particular, in graph databases we are interested not only on the data contained but also on its topology. As a consequence, most graph database queries are navigational, asking whether some nodes are connected by edges or paths. Up to now, most foundational work has concentrated on the study of computational models and query languages, analyzing their expressivity, computability, and complexity. However, in our work we address a different kind of foundational work. We are not concerned with expressibility, efficiency or feasibility issues, but with correctness. More precisely, given an algorithm or an implementation for solving queries, how can we be sure that the answers obtained are correct (soundness) and that all possible correct answers are obtained by our implementation (completeness). In this sense, in this paper we first present a core query language, similar to Cypher or G-Core. Then, we define a simple logic whose formulas are precisely the database queries, and whose satisfaction relation defines what is a correct answer. Finally, we define an operational semantics, which could be seen as an abstract implementation of our language, showing that the semantics is correct, i.e. sound and complete with respect to our logic.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jlamp.2024.100997
+    \endverb
+    \field{issn}{2352-2208}
+    \field{pages}{100997}
+    \field{title}{A logical approach to graph databases}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S2352220824000518
+    \endverb
+    \field{volume}{141}
+    \field{journaltitle}{Journal of Logical and Algebraic Methods in Programming}
+    \field{year}{2024}
+  \endentry
+
+  \entry{SAAD2023136344}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SM}{%
+         family={Saad},
+         familyi={S\bibinitperiod},
+         given={Mohamed},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ZY}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Yingzhong},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=TJ}{%
+         family={Tian},
+         familyi={T\bibinitperiod},
+         given={Jinghai},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JJ}{%
+         family={Jia},
+         familyi={J\bibinitperiod},
+         given={Jia},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \keyw{Life cycle inventory, Labeled property graph, Neo4j database management system, Graph database, Knowledge graph}
+    \strng{namehash}{SM+1}
+    \strng{fullhash}{SMZYTJJJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Saa+23}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    Life cycle inventory (LCI) databases constitute the basis for the life cycle assessment (LCA) of a product system. LCI data involve complex relationships between the production activities and the environment. The currently used relational database employs a rigid schema structure of two-dimensional tables and lacks direct support for the complex relationships between LCI data. In this paper, a graph database was designed and constructed using Neo4j graph database management system. First, an LCI knowledge graph (LCIKG) model for the graph database is proposed, which employs the labeled property graph structure and describes the LCI data and the semantic relationships among LCI data concepts. Second, Ecoinvent datasets were successfully used to construct the LCI graph database by automatically extracting Cypher syntax patterns; then, Neo4j was used to store, visualize, and retrieve LCI data. Finally, a set of queries have been executed to evaluate the performance of the graph database; a case study has been provided to demonstrate the effectiveness of the proposed graph database. The graph database can effectively reduce the time and effort to query and process LCI data of a product system. Moreover, the dynamic schema of the LCIKG model promotes the scalability and interoperability of LCI data. The completed work provides a feasible solution for the issues and challenges in current LCI research and promotes the wide application of LCA.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jclepro.2023.136344
+    \endverb
+    \field{issn}{0959-6526}
+    \field{pages}{136344}
+    \field{title}{A graph database for life cycle inventory using Neo4j}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0959652623005024
+    \endverb
+    \field{volume}{393}
+    \field{journaltitle}{Journal of Cleaner Production}
+    \field{year}{2023}
+  \endentry
+
+  \entry{sharma_what_2024}{misc}{}
+    \name{author}{3}{}{%
+      {{hash=SM}{%
+         family={Sharma},
+         familyi={S\bibinitperiod},
+         given={Manish},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WWW}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={William\bibnamedelima W},
+         giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=PS}{%
+         family={Porter},
+         familyi={P\bibinitperiod},
+         given={Simon},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SMWWWPS1}
+    \strng{fullhash}{SMWWWPS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{SWP24}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    What is Azure Cosmos DB for Apache Gremlin?%
+    }
+    \field{title}{What is {Azure} {Cosmos} {DB} for {Apache} {Gremlin}?}
+    \verb{url}
+    \verb https://learn.microsoft.com/en-us/azure/cosmos-db/gremlin/introductio
+    \verb n
+    \endverb
+    \field{journaltitle}{What is Azure Cosmos DB for Apache Gremlin?}
+    \field{month}{06}
+    \field{year}{2024}
+    \field{urlday}{24}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{SHIN202292}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SE}{%
+         family={Shin},
+         familyi={S\bibinitperiod},
+         given={Eunji},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=YS}{%
+         family={Yoo},
+         familyi={Y\bibinitperiod},
+         given={Sangwoo},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=JY}{%
+         family={Ju},
+         familyi={J\bibinitperiod},
+         given={Yongtaek},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Shin},
+         familyi={S\bibinitperiod},
+         given={Dongil},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \keyw{Chemical Safety, Exposure Symptom Knowledge, Data Analytics, Knowledge Graph, Knowledge Graph Embedding, Knowledge Graph Reasoning}
+    \strng{namehash}{SE+1}
+    \strng{fullhash}{SEYSJYSD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Shi+22}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    Chemical exposure accidents pose a risk of serious injury and property damage if the diagnosis or response is not properly performed after the initial discovery. Due to lack of research on the dynamically changing environment and detection of chemical substances considering symptoms, real-time knowledge services are required, such as rapid diagnosis of chemicals exposed at the accident site and the following early response. In this study, we propose an AI-based analysis system, Symptom-based Expert for Advanced Response to Chemical Hazards (SEARCH), for chemical substance diagnosis from exposure symptoms actively collected for real-time response and mitigation to hazardous material accidents. Knowledge is collected from chemical database such as WISER, PubChem etc., and integrated for the analytics of chemical exposure accidents and contact symptoms. We design and construct ontology and knowledge graph (KG) for 1001 major chemical substances. The built KG is verified using KG embedding models and the performance of each model is compared. The proposed system identifies the substance candidates through KG query and reasoning considering the exposure conditions. Using the symptom KG, the system SEARCH can provide the means to analyze real-time data from the field and transform it into insights and actions related to emergency response.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.psep.2021.11.002
+    \endverb
+    \field{issn}{0957-5820}
+    \field{pages}{92\bibrangedash 105}
+    \field{title}{Knowledge graph embedding and reasoning for real-time analytics support of chemical diagnosis from exposure symptoms}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S095758202100598X
+    \endverb
+    \field{volume}{157}
+    \field{journaltitle}{Process Safety and Environmental Protection}
+    \field{year}{2022}
+  \endentry
+
+  \entry{apache_hadoop_2024}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=SFA}{%
+         family={Software\bibnamedelima Foundation},
+         familyi={S\bibinitperiod\bibinitdelim F\bibinitperiod},
+         given={Apache},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SFA1}
+    \strng{fullhash}{SFA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{SF24}
+    \field{extraalpha}{1}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Apache {Hadoop}}
+    \verb{url}
+    \verb https://hadoop.apache.org/
+    \endverb
+    \field{journaltitle}{Apache Hadoop}
+    \field{month}{06}
+    \field{year}{2024}
+    \field{urlday}{24}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{apache_spark_2024}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=SFA}{%
+         family={Software\bibnamedelima Foundation},
+         familyi={S\bibinitperiod\bibinitdelim F\bibinitperiod},
+         given={Apache},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SFA1}
+    \strng{fullhash}{SFA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{SF24}
+    \field{extraalpha}{2}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Apache {Spark}}
+    \verb{url}
+    \verb https://spark.apache.org/
+    \endverb
+    \field{journaltitle}{Apache Spark}
+    \field{month}{06}
+    \field{year}{2024}
+    \field{urlday}{24}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{apache_gremlin_2024}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=SFA}{%
+         family={Software\bibnamedelima Foundation},
+         familyi={S\bibinitperiod\bibinitdelim F\bibinitperiod},
+         given={Apache},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SFA1}
+    \strng{fullhash}{SFA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{SF24}
+    \field{extraalpha}{3}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Apache {TinkerPop}: {Gremlin}}
+    \verb{url}
+    \verb https://tinkerpop.apache.org/gremlin.html
+    \endverb
+    \field{journaltitle}{Apache TinkerPop: Gremlin}
+    \field{month}{06}
+    \field{year}{2024}
+  \endentry
+
+  \entry{SUN2024223}{incollection}{}
+    \name{author}{1}{}{%
+      {{hash=SR}{%
+         family={Sun},
+         familyi={S\bibinitperiod},
+         given={Ricky},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \name{editor}{1}{}{%
+      {{hash=SR}{%
+         family={Sun},
+         familyi={S\bibinitperiod},
+         given={Ricky},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \keyw{Graph database architecture, Horizontal scalability, Distributed consensus, RAFT, HTAP, Grid, Shard, Partitioning}
+    \strng{namehash}{SR1}
+    \strng{fullhash}{SR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Sun24}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{abstract}{%
+    Designing a distributed and scalable graph database system is not a trivial task. Many of the knowledge and engineering practices about scalable database designs we have learned in the past would not work well on graph databases. This is due to the unique challenges of graph data and graph queries. This chapter leads the readers to take a panoramic and analytical review of distributed system design concepts and gradually progress from vertical scalability to horizontal scalability, and offers detailed examples and instructions on how to architect a sound distributed graph system and validate if there are any design loopholes.%
+    }
+    \field{booktitle}{The Essential Criteria of Graph Databases}
+    \verb{doi}
+    \verb https://doi.org/10.1016/B978-0-443-14162-1.00006-4
+    \endverb
+    \field{isbn}{978-0-443-14162-1}
+    \field{pages}{223\bibrangedash 269}
+    \field{title}{Chapter 5 - Scalable graphs}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/B978044314162100006
+    \verb 4
+    \endverb
+    \field{year}{2024}
+  \endentry
+
+  \entry{timon-reina_overview_2021}{article}{}
+    \name{author}{3}{}{%
+      {{hash=TRS}{%
+         family={Timón-Reina},
+         familyi={T\bibinithyphendelim R\bibinitperiod},
+         given={Santiago},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=RM}{%
+         family={Rincón},
+         familyi={R\bibinitperiod},
+         given={Mariano},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MTR}{%
+         family={Martínez-Tomás},
+         familyi={M\bibinithyphendelim T\bibinitperiod},
+         given={Rafael},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{language}{1}{%
+      {en}%
+    }
+    \strng{namehash}{TRSRMMTR1}
+    \strng{fullhash}{TRSRMMTR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{TRRMT21}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{abstract}{%
+    Abstract Over the past couple of decades, the explosion of densely interconnected data has stimulated the research, development and adoption of graph database technologies. From early graph models to more recent native graph databases, the landscape of implementations has evolved to cover enterprise-ready requirements. Because of the interconnected nature of its data, the biomedical domain has been one of the early adopters of graph databases, enabling more natural representation models and better data integration workflows, exploration and analysis facilities. In this work, we survey the literature to explore the evolution, performance and how the most recent graph database solutions are applied in the biomedical domain, compiling a great variety of use cases. With this evidence, we conclude that the available graph database management systems are fit to support data-intensive, integrative applications, targeted at both basic research and exploratory tasks closer to the clinic.%
+    }
+    \verb{doi}
+    \verb 10.1093/database/baab026
+    \endverb
+    \field{issn}{1758-0463}
+    \field{pages}{baab026}
+    \field{title}{An overview of graph databases and their applications in the biomedical domain}
+    \verb{url}
+    \verb https://academic.oup.com/database/article/doi/10.1093/database/baab02
+    \verb 6/6277712
+    \endverb
+    \field{volume}{2021}
+    \verb{file}
+    \verb Volltext:/Users/daniellanghann/Zotero/storage/GUCMS5Y9/Timón-Reina e
+    \verb t al. - 2021 - An overview of graph databases and their applicati.pdf
+    \verb :application/pdf
+    \endverb
+    \field{journaltitle}{Database}
+    \field{month}{05}
+    \field{year}{2021}
+    \field{urlday}{27}
+    \field{urlmonth}{05}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{sparql_2024}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=WWWWCW}{%
+         family={W3C},
+         familyi={W\bibinitperiod},
+         given={World Wide Web Consortium\bibnamedelima (W3C)},
+         giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WWWWCW1}
+    \strng{fullhash}{WWWWCW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{W3C24}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{SPARQL}
+    \verb{url}
+    \verb https://www.w3.org/TR/sparql11-query/
+    \endverb
+    \field{journaltitle}{W3C}
+    \field{month}{06}
+    \field{year}{2024}
+    \field{urlday}{24}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{WIHARJA2020100616}{article}{}
+    \name{author}{4}{}{%
+      {{hash=WK}{%
+         family={Wiharja},
+         familyi={W\bibinitperiod},
+         given={Kemas},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=PJZ}{%
+         family={Pan},
+         familyi={P\bibinitperiod},
+         given={Jeff\bibnamedelima Z.},
+         giveni={J\bibinitperiod\bibinitdelim Z\bibinitperiod},
+      }}%
+      {{hash=KMJ}{%
+         family={Kollingbaum},
+         familyi={K\bibinitperiod},
+         given={Martin\bibnamedelima J.},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=DY}{%
+         family={Deng},
+         familyi={D\bibinitperiod},
+         given={Yu},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \keyw{Knowledge Graph completion, Schema aware, Knowledge Graph reasoning, Approximate reasoning, SHACL constraint, Correctness and coverage}
+    \strng{namehash}{WK+1}
+    \strng{fullhash}{WKPJZKMJDY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Wih+20}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{abstract}{%
+    Recent success of Knowledge Graph has spurred widespread interests in methods for the problem of Knowledge Graph completion. However, efforts to understand the quality of the candidate triples from these methods, in particular from the schema aspect, have been limited. Indeed, most existing Knowledge Graph completion methods do not guarantee that the expanded Knowledge Graphs are consistent with the ontological schema of the initial Knowledge Graph. In this work, we challenge the silver standard method, by proposing the notion of schema-correctness. A fundamental challenge is how to make use of different types of Knowledge Graph completion methods together to improve the production of schema-correct triples. To address this, we analyse the characteristics of different methods and propose a schema aware iterative approach to Knowledge Graph completion. Our main findings are: (i) Some popular Knowledge Graph completion methods have surprisingly low schema-correctness ratio; (ii) Different types of Knowledge Graph completion methods can work with each other to help overcame individual limitations; (iii) Some iterative sequential combinations of Knowledge Graph completion methods have significantly better schema-correctness and coverage ratios than other combinations; (iv) All the MapReduce based iterative methods outperform involved single-pass methods significantly over the tested Knowledge Graphs in terms of productivity of schema-correct triples. Our findings and infrastructure can help further work on evaluating Knowledge Graph completion methods, more fine-grained approaches for schema aware iterative knowledge graph completion, as well as new approximate reasoning approaches based Knowledge Graph completion methods.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.websem.2020.100616
+    \endverb
+    \field{issn}{1570-8268}
+    \field{pages}{100616}
+    \field{title}{Schema aware iterative Knowledge Graph completion}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S1570826820300494
+    \endverb
+    \field{volume}{65}
+    \field{journaltitle}{Journal of Web Semantics}
+    \field{year}{2020}
+  \endentry
+
+  \entry{XU202212}{article}{}
+    \name{author}{4}{}{%
+      {{hash=XC}{%
+         family={Xu},
+         familyi={X\bibinitperiod},
+         given={Chengshuo},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MA}{%
+         family={Mazloumi},
+         familyi={M\bibinitperiod},
+         given={Abbas},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=JX}{%
+         family={Jiang},
+         familyi={J\bibinitperiod},
+         given={Xiaolin},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=GR}{%
+         family={Gupta},
+         familyi={G\bibinitperiod},
+         given={Rajiv},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \keyw{Batch of queries, Sharing computation, Amortizing overhead, Power-law graphs, Graph analytics}
+    \strng{namehash}{XC+1}
+    \strng{fullhash}{XCMAJXGR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Xu+22}
+    \field{sortinit}{X}
+    \field{sortinithash}{X}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jpdc.2022.01.007
+    \endverb
+    \field{issn}{0743-7315}
+    \field{pages}{12\bibrangedash 27}
+    \field{title}{SimGQ+: Simultaneously evaluating iterative point-to-all and point-to-point graph queries}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0743731522000120
+    \endverb
+    \field{volume}{164}
+    \field{journaltitle}{Journal of Parallel and Distributed Computing}
+    \field{year}{2022}
+  \endentry
+
+  \entry{yuanyuan_tian_world_2022}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=YT}{%
+         family={Yuanyuan},
+         familyi={Y\bibinitperiod},
+         given={Tian},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YT1}
+    \strng{fullhash}{YT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Yua22}
+    \field{sortinit}{Y}
+    \field{sortinithash}{Y}
+    \field{title}{The {World} of {Graph} {Databases} from {An} {Industry} {Perspective}}
+    \verb{url}
+    \verb https://arxiv.org/pdf/2211.13170
+    \endverb
+    \field{month}{11}
+    \field{year}{2022}
+    \field{urlday}{28}
+    \field{urlmonth}{04}
+    \field{urlyear}{2024}
+  \endentry
+
+  \entry{noauthor_opencypher_2024}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Noa}
+    \field{extraalpha}{2}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{title}{{openCypher}}
+    \verb{url}
+    \verb https://opencypher.org/
+    \endverb
+    \field{journaltitle}{openCypher}
+    \field{month}{06}
+    \field{year}{2024}
+    \field{urlday}{23}
+    \field{urlmonth}{06}
+    \field{urlyear}{2024}
+  \endentry
+\enddatalist
+\endinput

@@ -1,0 +1,414 @@
+\chapter{Different query languages for graph databases}
+\label{ch:different_query_languages_for_graph_databases}
+After clarifiying important terms and concepts of graph databases and a short introduction of the GQL-standard in chapter \ref{ch:iso},
+now, specific database systems, their concepts and syntax will be introduced
+and compared against the criteria definded in chapter \ref{ch:criteria_for_comparison}.
+
+%*******************************************************
+% openCypher
+%*******************************************************
+
+\section{openCypher}
+\label{sec:different_query_languages_for_graph_databases:openCypher}
+openCypher \citep{noauthor_opencypher_2024} is an open Source Framework which is the basis for Cyper the Query language
+developed by Neo4J \citep{noauthor_neo4j_223}.
+The benchmark querie in openCypher can be implemented as in the following listing \ref{lst:benchmarkOC}:
+\begin{lstlisting}[caption={Benchmark Query in openCypher}, label={lst:benchmarkOC}] 
+	MATCH (person:Person)-[r1:worksFor]->(company:Company)-[r2:partnerOf]->(partner:Company)
+	WHERE person.age > 25 AND company.revenue > 1000000
+	WITH person, company, partner, COUNT(r1) AS workRelationships, COLLECT(r2) AS partnerRelationships
+	MATCH (person)-[r3:KNOWS]->(colleague:Person)
+	WHERE colleague.age < 30
+	RETURN person.name AS personName, company.name AS companyName, partner.name AS partnerName,
+		workRelationships, partnerRelationships, COLLECT(colleague.name) AS youngColleagues
+	ORDER BY person.name, company.name
+	LIMIT 100
+\end{lstlisting}
+Obviously, the syntax is almost identical to the syntax of the benchmark query in listing \ref{lst:benchmark}. 
+The only difference is that openCypher is case sensitive.
+Next, the four evaluation criteria will be applied to openCypher.
+\subsection{Expressiveness of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:expressiveness}
+The first criteria is expressiveness or the ability of openCypher to allow a wide
+range of queries on graph data as described in chapter \ref{sec:criteria_for_comparison:expressiveness}. 
+openCypher suppports intuitive pattern matching with a concise syntax that enables the
+user to describe complex graph structures easily which the following listing \ref{lst:GPMOC} shows:
+\begin{lstlisting}[caption={Graph Pattern Matching in openCypher}, label={lst:GPMOC}] 
+	MATCH  (a)-[r]->(b)
+	RETURN a,b
+\end{lstlisting} 
+The user can search all nodes \textit{a} related to node \textit{b} by relationship \textit{r}
+like in listing \ref{lst:createOneHopGraph}.\\
+The listing \ref{lst:updateOC} shows how the user can manipulate data in openCypher:
+
+\begin{lstlisting}[caption={Graph Pattern Matching in openCypher}, label={lst:updateOC}] 
+	MATCH (c {customerStatus: 'Inactice'})
+	SET c.invoiceAccepted = 'False'
+	RETURN a
+\end{lstlisting}
+Also, Aggregation and Functions are supported in openCypher 
+as shown in the apendix in listing \ref{lst:aggregationFunctionsOC}.
+
+\subsection{Performance and performance optimization in openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:performance}
+The complexity of a query, including the number of nodes, the relationships and the depth of the
+pattern to match has huge impact of the query performance. Also, the size of the data which has 
+to be processed has an impact of the query performance. Indexing is one way to optimize the 
+performance of a query and is an important concept to enable fast queries on large 
+datasets \citep{7231397}. 
+The following example in listing \ref{lst:indexCypher} shows the creation of an index in openCypher \citep{noauthor_opencypher_2024}:
+\begin{lstlisting}[caption={Index creation in openCypher}, label={lst:indexCypher}] 
+	CREATE INDEX ON :Customer(id)
+\end{lstlisting}
+The example in listing \ref{lst:indexCypher} creates an Index on the property \textit{id}
+of the node \textit{Customer}. The user can also run 
+\begin{lstlisting} 
+	CALL db.indexes()
+\end{lstlisting}
+to review the current indexes and optimize them if needed \citep{noauthor_opencypher_2024}.
+\newline
+In openCypher the user can analyze how the query works by using the keywords \textit{EXPLAIN} (listing \ref{lst:explainProfileInopenCypher})
+and \textit{PROFILE} to optimize the query for example by limiting the scope (listing \ref{lst:limitInopenCypher}):
+\begin{lstlisting}[caption={Using EXPLAIN or PROFILE in openCypher}, label={lst:explainProfileInopenCypher}] 
+	EXPLAIN | PROFILE MATCH  (a)-[r]->(b)
+	RETURN a,b
+\end{lstlisting}
+\begin{lstlisting}[caption={Set a Limit in openCypher}, label={lst:limitInopenCypher}] 
+	MATCH  (a: Company {name: "ABC GmbH"})-[r:PARTNER_OF]->(b: Company {name: XYZ AG"})
+	RETURN a,b LIMIT 10
+\end{lstlisting}
+The user can also use the \textit{UNWIND} clause to organize data operations in batches  \citep{noauthor_opencypher_2024}:
+\begin{lstlisting}[caption={Batch operations in openCypher using UNWIND}, label={lst:batchInopenCypher}] 
+	UNWIND  [{name: 'ABC Inc.', name: 'XYZ Ltd.'}] AS customer
+	CREATE (c:Customer {name: customer.name})
+\end{lstlisting}
+
+\subsection{Interoperability of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:interoperability}
+Many vendors for Graph Databases using openCypher for example, Neo4J \citep{noauthor_neo4j_223}, Memgraph \citep{10391694} and SAP HANA \citep{bach_testing_2022}.
+Neo4J for example provides an API to openCypher (or Cypher), so the user can interact
+with the Graph Databases within the application source code, which it makes easy to 
+integrate openCypher. 
+The example in listing \ref{lst:pythonAndopenCypher} shows the integration in an example Python application \citep{noauthor_neo4j_223}.
+The fact that large database providers use openCypher as a basis ensures a high density of interfaces 
+to other databases and technologies, as these providers have an interest in distributing or selling the technology. 
+In addition, there is a large community of people who use the technology and provide support. 
+
+\subsection{Closeness to the GQL standard of openCypher}
+\label{subsec:different_query_languages_for_graph_databases:openCypher:iso}
+The previous chapters have already pointed out how closely openCypher 
+and the GQL standard are linked. 
+The syntax is almost identical as shown in listing \ref{lst:benchmark} (benchmark) compared to listing \ref{lst:benchmarkOC} (benchmark in openCypher). 
+Differences in the syntax and capabilities exist, 
+but are not decisively relevant and it can be assumed that openCypher 
+and the GQL standard will be further harmonized. 
+It therefore seems appropriate at this point to highlight the differences 
+between openCypher and the GQL standard rather than the similarities:
+\begin{itemize}
+	\item GQL uses the keyword INSERT where openCypher uses CREATE
+	\item FOR statement in GQL is equivalent to UNWIND in openCypher
+	\item MERGE, FOREACH and LOAD CSV are available in openCypher but not in GQL
+	\item openCypher is case sensitive and GQL not
+\end{itemize}
+
+%*******************************************************
+% Gremlin
+%*******************************************************
+
+\section{Gremlin}
+\label{sec:different_query_languages_for_graph_databases:gremlin}
+Gremlin is query and traversal language for graph databases, developed as part of Apache TinkerPop \citep{apache_gremlin_2024}.
+It supports a standardised way to interact with graph data by enabling users to traverse, query and
+manipulate, 
+nodes, edges and properties of graph data. 
+Gremlin is not tied to a specific graph database and provides a high level abstraction layer.
+This means that not only TinkerPop-enabled graph systems can execute Gremlin traversals, 
+but also, every Gremlin traversal can be evaluated as either a real-time database query
+or as a batch analytics query. 
+
+\subsection{Gremlin - a traversal language}
+Traversals are sequences of steps that navigate through a graph. Theses steps can include operations
+like, Filtering, Mapping and Reducing.
+The following example points out the concept based on the benchmark query definded in listing \ref{lst:benchmark}:
+\begin{lstlisting}[caption={Benchmark Query in Gremlin}, label={lst:benchmarkGremlin}] 
+	g.V().hasLabel('Person')
+	.has('age', gt(25))
+	.as('person')
+	.outE('worksFor').as('r1')
+	.inV().hasLabel('Company')
+	.has('revenue', gt(1000000))
+	.as('company')
+	.outE('partnerOf').as('r2')
+	.inV().hasLabel('Company')
+	.as('partner')
+	.select('person', 'company', 'partner', 'r1', 'r2')
+	.group()
+		.by(select('person', 'company', 'partner'))
+		.by(
+		project('workRelationships', 'partnerRelationships', 'youngColleagues')
+			.by(__.select('r1').count())
+			.by(__.select('r2').fold())
+			.by(
+			__.select('person')
+				.out('KNOWS').hasLabel('Person').has('age', lt(30))
+				.values('name').fold()
+			)
+		)
+	.unfold()
+	.order()
+		.by(select(keys).by('person').by('name'), asc)
+		.by(select(keys).by('company').by('name'), asc)
+	.limit(100)
+	.project('personName', 'companyName', 'partnerName', 'workRelationships', 'partnerRelationships', 'youngColleagues')
+		.by(select(keys).by('person').by('name'))
+		.by(select(keys).by('company').by('name'))
+		.by(select(keys).by('partner').by('name'))
+		.by(select(values).by('workRelationships'))
+		.by(select(values).by('partnerRelationships'))
+		.by(select(values).by('youngColleagues'))
+\end{lstlisting}
+It can be noted that the Gremlin concept differs significantly 
+from the GQL standard and requires almost twice as many characters (listing \ref{lst:benchmarkGremlin})
+as the benchmark query in listing \ref{lst:benchmark} to retrieve the same level of information.
+The concept of GQL follows the principles of SQL while Gremlin follows 
+the principles of imperative programming.
+\subsection{Expressiveness of Gremlin}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:expressiveness}
+A simple GPM as described in Chapter \ref{subsec:iso:examples:queries_and_graph_pattern_matching} can 
+be implemented as in listing \ref{lst:simpleGPMGremlin}:
+\begin{lstlisting}[caption={Graph Pattern Matching in Gremlin}, label={lst:simpleGPMGremlin}]
+	g.V().match(
+		__.as('a').out().as('b')
+	).select('a', 'b')
+\end{lstlisting}
+\textit{g.V()} starts with all vertices in the graph.\footnote[1]{In Gremlin the term vertice is used
+instead of node but it means almost the same.}
+\begin{lstlisting}
+	.match(
+		__.as('a').out().as('b')
+\end{lstlisting}
+finds all pattern where there is an outgoing edge
+from vertex \textit{a} to vertex \textit{b}.
+\textit{select('a', 'b')} selects and returns the matched vertices.
+Next, the data manipulation in Gremlin will demonstrated based on TODO reference 
+\begin{lstlisting}[caption={Updating Vertex Properties in Gremlin}, label={lst:updateGremlin}]
+	g.V().has('customerStatus', 'Inactive').property('invoiceAccepted', 'False').valueMap()
+\end{lstlisting}
+First, it starts to find all vertices in the graph and filters all with a match with
+\begin{lstlisting}
+	.has('customerStatus', 'Inactive')
+\end{lstlisting}
+After matching the property, \textit{invoiceAccepted} will be set to \textit{False}.
+The \textit{.valueMap} returns the properties of the updated vertices.
+Next, the criteria Aggregations and Functions will be implemented in Gremlin based 
+on listing \ref{lst:companyAggregationFunctionsGremlin}.\\
+The part 
+\begin{lstlisting}
+	g.V().hasLabel('Company').as('c')
+\end{lstlisting}
+selects all vertices with the label \textit{Company} and set an alias \textit{c}.
+The part 
+\begin{lstlisting}
+	.out('PARTNER_OF').hasLabel('Company').as('p')
+\end{lstlisting}
+The traverse is using the outgoing edge \textit{PARTNER\_OF} to other vertices with 
+the Label \textit{Company} and set an alias \textit{p}. \\ 
+With the expression
+\begin{lstlisting}
+	.group()
+	    .by('c')
+\end{lstlisting}
+the results will grouped by the original company vertices.
+The calculation part:
+\begin{lstlisting}
+	.by(
+	      fold().coalesce(
+	        unfold().values('revenue').mean().as('averagePartnerRevenue'),
+	        constant(0)
+	      ).as('averagePartnerRevenue')
+	      .count().as('partnersCount')
+	    )
+\end{lstlisting}
+calculates for each group the average revenue and the count of the partners.\\
+The rest of the query in listing \ref{lst:companyAggregationFunctionsGremlin} 
+is to flatten the grouped results and organize the output.\\
+The query provided in listing \ref{lst:companyExpressiveFilteringGremlin} 
+shows how Expressive Filtering works in Gremlin.
+The query does the same as in lsiting \ref{lst:companyExpressiveFilteringOC}. \\
+The part
+\begin{lstlisting}
+	.project('cName', 'pName', 'pRevenue')
+	   .by(inV().values('name'))
+	   .by(values('name'))
+	   .by(values('revenue'))
+\end{lstlisting} 
+projects the desired properties into a result set.
+
+\subsection{Interoperability of Gremlin}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:interoperability}
+Gremlin is designed to be \textbf{language agnostic}, meaning it is compatible and
+can be used with other programming languages.
+Important supported languages are Python, Java and JavaScript \citep{apache_gremlin_2024}.
+This allows the developer to use Gremlin within the preferred 
+development environment.
+As already mentioned in chapter \ref{sec:different_query_languages_for_graph_databases:gremlin} Gremlin operates independetly of the corresponding
+database system. It can be used with every database compatible with the TinkerPop stack, but huge
+vendors like also provide plug in's to Gremlin including Neo4J \citep{noauthor_neo4j_223}, \ac{AWS} \citep{gremlin_chaos_nodate} 
+and Microsoft Azure \citep{sharma_what_2024}.
+In addition, there are seamless integrations to big data systems such as,
+Apache Hadoop \citep{apache_hadoop_2024} and Apache Spark \citep{apache_spark_2024}.
+The example in listing \ref{lst:pythonAndGremlin} implements 
+the execution of a Gremlin querie with a python client and can be compared against
+listing \ref{lst:pythonAndopenCypher} which does the same in openCypher.
+
+
+\subsection{Performance and performance optimization in Gremlin}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:performance}
+Due to the fact, that Gremlin provides an indenpendent high level API 
+the performance optimization steps directly related to the underlying database
+has to be done on the database itself and is not directly part of Gremlin.
+For example it is possible to create an Index via openCypher as shown in listing 
+\ref{lst:indexCypher} and then use Gremlin to actually run the query.
+The following rules should be considerd
+to optimize the performance of Gremlin query \citep{XU202212}:
+\begin{itemize}
+	\item Filtering has to be applied as early as possible to reduce the query scope.
+	\item If possible using limit().
+	\item Utilize local traversals (e.g. select(), local()) to operate on specific parts of the graph.
+\end{itemize}
+In listing \ref{lst:filterEarlyGremlin} the 
+"Apply filter early" strategy is implemented.
+The user can also limit the scope of a querie (listing \ref{lst:limitGremlin}) and 
+enable the concepts of \textit{PROFILE} and \textit{EXPLAIN} by just setting
+\textit{.profile} or \textit{.explain} at the end of the query to get more detailed 
+information about the execution plan with and without actually running the query.
+
+\subsection{Closeness to the GQL standard of Gremlin}
+\label{subsec:different_query_languages_for_graph_databases:gremlin:iso}
+Due to the fact that the query paradigm of Gremlin is \textbf{imperative} and the
+query paradigm of the GQL standard is \textbf{declarative} it can be concluded that Gremlin 
+is comparatively far away from the GQL standard. Because the imperative paradigm 
+forces the user to define \textbf{how} to retrieve the data and not as the GQL standard
+defines \textbf{what} data has be retrieved or processed \citep{apache_gremlin_2024}.
+The syntax of Gremlin is procedural like a programming language and the GQL standard is
+inspired by SQL \citep{hare_isoiec_2024}.\newline
+But, users who are familiar with the concepts of querying non relational databases like 
+MongoDB will recognize the concepts of Gremlin \citep{CABRAL2023102165}.\\
+In Addition, important Big Data technologies like Apache Hadoop \citep{apache_hadoop_2024}
+are seamless interacting with Gremlin which should ensure broad acceptance in the field of Big Data, 
+regardless of the integration of Gremlin 
+into important programming languages such as Python (listing \ref{lst:pythonAndGremlin}).
+
+%*******************************************************
+% SparQL
+%*******************************************************
+
+\section{SPARQL}
+\label{sec:different_query_languages_for_graph_databases:sparql}
+SPARQL is a graph-based query language for querying content from a \ac{RDF} system,
+which is used in databases to formulate logical statements about any object
+and is provided by the \ac{W3C} \citep{sparql_2024}. 
+
+\subsection{RDF Ressource Description Framework}
+\label{subsec:different_query_languages_for_graph_databases:sparql:rdf}
+The RDF is a standard model 
+for the exchange and representation of information on the web. 
+It was developed by the W3C and is a central component 
+of the \textbf{Semantic Web}.
+RDF is a simple data structure consisiting of a triple of Subjects,
+Predicates and Objects. 
+Any Ressource has an identifier the \ac{URI} \citep{10.1145/3591366.3591376}.\\
+SPARQL can be used to express queries across different data sources, 
+regardless of whether the data is stored natively as RDF or displayed as RDF via middleware. 
+SPARQL includes functions for querying required and optional graph patterns 
+and their AND (conjunction) and OR (disjunction) operations. 
+SPARQL also supports testing expandable values and restricting queries \citep{sparql_2024}.\\
+Below, in listing \ref{lst:benchmarkSPQARQL} the Benchmark query (listing \ref{lst:benchmark}) 
+is performed by using SPARQL:
+\begin{lstlisting}[caption={Benchmark query in SPARQL}, label={lst:benchmarkSPQARQL}]
+	PREFIX ex: <http://examplehost.org/>
+	SELECT ?personName ?companyName ?partnerName (COUNT(?r1) AS ?workRelationships) (GROUP_CONCAT(?r2; separator=",") AS ?partnerRelationships) (GROUP_CONCAT(?colleagueName; separator=",") AS ?youngColleagues)
+	WHERE {
+	?person a ex:Person ;
+			ex:worksFor ?company ;
+			ex:name ?personName ;
+			ex:age ?personAge .
+	FILTER (?personAge > 25)
+
+	?company a ex:Company ;
+			ex:partnerOf ?partner ;
+			ex:name ?companyName ;
+			ex:revenue ?companyRevenue .
+	FILTER (?companyRevenue > 1000000)
+
+	?partner a ex:Company ;
+			ex:name ?partnerName .
+	
+	?person ex:KNOWS ?colleague .
+	?colleague a ex:Person ;
+				ex:age ?colleagueAge ;
+				ex:name ?colleagueName .
+	FILTER (?colleagueAge < 30)
+	}
+	GROUP BY ?personName ?companyName ?partnerName
+	ORDER BY ?personName ?companyName
+	LIMIT 100
+\end{lstlisting}
+The \textit{PREFIX} declaration defines the (fictive) base URI.
+The \textit{SELECT} clause specifies the variables to be returned and the
+\textit{WHERE} clause contains the tripple patterns and filter that match 
+the definded relationships and constraints.
+The \textit{GROUP BY} clause is doing almost the same as the \textit{WITCH} Clause in 
+the Benchmark query.
+\textit{ORDER BY} and \textit{LIMIT} sort and limit the result.
+ The results of SPARQL queries can be a result 
+of sets or RDF diagrams \citep{sparql_2024}.
+
+\subsection{Expressiveness of SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:expressiveness}
+SPARQL support GPM (cf. chapter \ref{subsec:iso:examples:queries_and_graph_pattern_matching})  through triple pattern, which are conceptually similar to 
+to the pattern matching in property graph query languages, but the syntax is 
+different (cf. listing \ref{lst:createOneHopGraph} and \ref{lst:GPMSPARQL}).
+The query in listing \ref{lst:GPMSPARQL} matches any triple where \textit{?a} is connected to \textit{?b}
+by any predicate \textit{?r}.
+Instead of setting properties on nodes, the user add or modify triples \citep{sparql_2024}.\\ 
+The example in listing \ref{lst:createSPARQL} creates two \textit{Customer} Objects.
+On the created Objects an update querie can be performed 
+as shown in listing \ref{lst:updateSPARQL}.\\
+Examples for Filtering and Aggregation can be found in listing \ref{lst:aggFuncSPARQL} and  
+\ref{lst:expressiveFilteringSPARQL}.
+
+
+\subsection{Interoperability of SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:interoperability}
+For SPARQL are libraries for important programming languages available, like for 
+Python, Java and JavaScript (cf. listing \ref{lst:pythonSPARQL}),
+which ensures a strong interoperability between SparQL and other systems and APIs. 
+Also Integrations for Big Data- and \ac{ETL} tools 
+like Apache Hadoop \citep{apache_hadoop_2024} and Apache Spark \citep{apache_spark_2024}
+are available for SPARQL \citep{DBLP:journals/corr/NaackeCA16}.
+
+\subsection{Performance and performance optimization in SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:performance}
+As in other Query languages, general rules should be applied on SPARQL Queries for example
+the already mentioned filter early 
+strategy (cf. chapter \ref*{subsec:different_query_languages_for_graph_databases:gremlin:performance}) 
+which is crucial when the query is processed on a large dataset. 
+It is also possible to reduce and paginate the scope of a query by using \textit{LIMIT} and \textit{OFFSET}
+clauses.
+In addition it is also helpful, when the related RDF Store provides indexing.
+As in Gremlin, the tool set for performance optimization depends on the 
+underlying database system (cf. chapter \ref*{subsec:different_query_languages_for_graph_databases:gremlin:performance}).
+
+\subsection{Closeness to the GQL standard of SPARQL}
+\label{subsec:different_query_languages_for_graph_databases:sparql:iso}
+SPARQL, ideal for RDF and the Semantic Web, offers robust querying capabilities 
+for Linked Data and Ontologies. GQL, on the other hand, is designed for property graphs, 
+intuitive for pattern matching and graph data algorithms, 
+such as those used in Social Networks and Recommendation Systems. 
+Both languages are declarative, 
+allowing users to specify the needed data without specifying the related execution methods. 
+Both languages are SQL-oriented, providing concepts familiar to SQL users. 
+While concepts are similar, the underlying data models differ: 
+GQL maps graph data more precisely, while SPARQL represents graph data as triples, 
+specifically adapted to its use cases \citep{hare_isoiec_2024} \citep{sparql_2024}.

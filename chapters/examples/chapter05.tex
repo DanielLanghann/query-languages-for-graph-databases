@@ -1,0 +1,403 @@
+\chapter{Conclusion}
+\label{ch:conclusion}
+The work now concludes with a summary of the results in chapter \ref{sec:conclusion:executive_summary} 
+and an outlook in chapter \ref{sec:conclusion:review_and_outlook} 
+to what extent query languages for graph databases and graph databases in general could develop.
+
+\section{Executive summary}
+\label{sec:conclusion:executive_summary}
+In chapter \ref{ch:different_query_languages_for_graph_databases}, 
+openCypher was introduced as the first language (cf. chapter \ref{sec:different_query_languages_for_graph_databases:openCypher}). 
+Cypher, as derivat of openCypher is devveloped 
+and distributed by Neo4J as part of a 
+database management system for graph databases \citep{noauthor_neo4j_223}. 
+Other major providers such as AWS also offer graph databases 
+that can be queried or operated using the syntax of openCypher \citep{aws_openCypher_2024}.
+Essential parts of openCypher have made it into the GQL standard. The syntax is, 
+with a few exceptions is identical between the openCypher and the 
+GQL standard (cf. chapter \ref*{subsec:different_query_languages_for_graph_databases:openCypher:iso}). 
+Since it is to be expected that, 
+as in the case of SQL, the query languages for graph databases will continue 
+to converge with the standard, it seems worthwhile to rely on technologies 
+that come very close to the GQL standard or map large parts of it. \\
+On the other hand, concepts based on imperative programming 
+and no sql concepts are widely used for various reasons for big data processing and ETL, 
+which argues for the use of technologies that 
+implement 
+these concepts (cf. chapter \ref{sec:different_query_languages_for_graph_databases:gremlin}).\\
+SparQL is designed for the specific purpose of queries related to the Semantic Web 
+and thus fulfills a different use case or is not designed for the data model of property graph data but, 
+as has been shown, can be applied 
+to such data (cf. chapter \ref{sec:different_query_languages_for_graph_databases:sparql}).
+
+\subsection{Expressiveness of the presented languages}
+\label{subsec:conclusion:executive_summary:expressiveness}
+All the languages presented reflect the benchmark for expressiveness described 
+in chapter \ref{sec:criteria_for_comparison:expressiveness}
+and can be described as equivalent or fulfilled in relation to this benchmark.
+
+\subsection{Options for optimizing the performance of the presented languages}
+\label{subsec:conclusion:executive_summary:performance}
+openCypher offers direct possibilities to optimize the performance of the underlying database 
+as the language is to be understood as part of a 
+database system 
+(cf. chapter \ref{subsec:different_query_languages_for_graph_databases:openCypher:performance}).
+Gremlin and SPARQL only offer options for evaluating the performance of queries and 
+improve these by e.g. switching to 
+filter-first 
+strategies (cf. chapter \ref{subsec:different_query_languages_for_graph_databases:gremlin:performance} 
+and \ref{subsec:different_query_languages_for_graph_databases:sparql:performance}).
+\subsection{Interoperability of the presented languages}
+\label{subsec:conclusion:executive_summary:interoperability}
+All languages also offer interoperability with important systems,
+and programming languages such as Python and Java 
+(cf. chapter \ref{subsec:different_query_languages_for_graph_databases:openCypher:interoperability},
+\ref{subsec:different_query_languages_for_graph_databases:gremlin:interoperability} and 
+\ref{subsec:different_query_languages_for_graph_databases:sparql:interoperability}).
+It is noticeable that Gremlin, as part of the Apache Foundation, is specifically connected to important
+systems in the context of big data and ETL, which are also provided by the Apache Foundation
+such as Apache Spark and Apache Hadoop (cf. \ref{subsec:different_query_languages_for_graph_databases:gremlin:interoperability}).
+\subsection{Closeness to the GQL standard of the presented languages}
+\label{subsec:conclusion:executive_summary:iso}
+In general, only openCypher (cf. chapter \ref{sec:different_query_languages_for_graph_databases:openCypher}) 
+and 
+Gremlin (cf. chapter \ref{sec:different_query_languages_for_graph_databases:gremlin})
+are concurrent here, since SPARQL does not map the 
+data model of propertiers graph data. 
+openCypher and the GQL standard 
+are very similar (cf. chapter \ref{subsec:different_query_languages_for_graph_databases:openCypher:iso}). 
+So if there is a need to stick to the GQL standard as close as possible 
+when choosing the query language for a graph database, the choice should 
+currently fall directly on openCypher or a derivative 
+of it \citep{noauthor_opencypher_2024} \citep{hare_isoiec_2024}.
+
+\section{Final review and outlook}
+\label{sec:conclusion:review_and_outlook}
+In general, all the presented languages are designed to search and process large volumes 
+of graph data or graph-like structures.
+openCypher seems to be the language to use in the context of pure graph data, 
+that is exactly tailored to this use case.
+The close alignment with the GQL standard ensures that the concepts and syntax of openCypher 
+will continue to be relevant in the future.
+The seamless integration of Gremlin into the previously mentioned big data technologies 
+also makes this language appear sufficiently generic, even if it is only slightly compatible with the 
+industry standard GQL. 
+SparQL follows a specific use case and a dedicated data structure. 
+The relevance of SPARQL is strongly related to the relevance of the Semantic Web.
+In the context of pure graph databases, it can be assumed that the concepts of openCypher 
+will continue to gain 
+relevance and that the providers of commercial products in this sector 
+will continue to drive standardization in the direction already taken.\\
+In general the future of graph databases seems to be promising 
+due to their ability to handle complex 
+and interconnected data relationships efficiently. 
+As businesses collect more data, graph databases will be crucial 
+for managing data complexity \citep{BARCELO2017164}. 
+They also enable real-time analytics \citep{SHIN202292}, 
+and are being integrated with other technologies such as machine learning and 
+artificial Intelligence \citep{PATIL2024102683}.
+Graph databases are designed to scale horizontaly \citep{SUN2024223}
+and are optimized for performance, making them suitable 
+for handling large amounts of data and high traffic volumes. 
+The increased use of large language models is likely 
+to further increase the demand for graph databases \citep{KUMAR2024100308}.
+
+\newpage
+
+\appendix
+\setcounter{page}{1}
+
+%*******************************************************
+% GQL
+%*******************************************************
+
+\section{GQL Queries}
+
+\begin{lstlisting}[caption={Example for a complex quantified graph pattern (Benchmark)}, label={lst:benchmark}]
+    MATCH (person:Person)-[r1:worksFor]->(company:Company)-[r2:partnerOf]->(partner:Company)
+	WHERE person.age > 25 AND company.revenue > 1000000
+	WITH person, company, partner, COUNT(r1) AS workRelationships, COLLECT(r2) AS partnerRelationships
+	MATCH (person)-[r3:KNOWS]->(colleague:Person)
+	WHERE colleague.age < 30
+	RETURN person.name AS personName, company.name AS companyName, partner.name AS partnerName, 
+		workRelationships, partnerRelationships, COLLECT(colleague.name) AS youngColleagues
+	ORDER BY person.name, company.name
+	LIMIT 100
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Complex insert statement}, label={lst:complexInsertStatement}]
+    /*Insert two nodes and one edge */
+	INSERT (:Customer {name: 'XYZ Ltd.', 
+					customerStatus: 'Active',
+					customerSince: date("2024-05-19")})
+	- [:located {since: date('2024-01-01')}] ->
+	(:City {name: 'Bremen',
+			state: 'Bremen',
+			country: 'Germany'})
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Concept of a graph type}, label={lst:graphType}] 
+    {
+       CREATE GRAPH TYPE /folder
+       (client: Client => {cid::STRING, cname::STRING}),
+       (agent:Agent => {no::STRING, office::STRING}),
+       (client)-[:SUPERVISED_BY]->(agent)
+
+    }
+\end{lstlisting}
+
+%*******************************************************
+% openCypher
+%*******************************************************
+
+\section{Queries of openCypher}
+
+\begin{lstlisting}[caption={Aggregation and Functions in openCypher}, label={lst:aggregationFunctionsOC}]
+	MATCH (c:Company)-[:PARTNER_OF]->(p:Company)
+	RETURN c.name, COUNT(p) AS partnersCount, AVG(p.revenue) AS averagePartnerRevenue
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Expressive Filtering in openCypher with Company Nodes}, label={lst:companyExpressiveFilteringOC}]
+	MATCH (c:Company)-[:PARTNER_OF]->(p:Company)
+	WHERE c.industry = 'Tech' AND p.revenue > 1000000
+	RETURN c.name, p.name, p.revenue
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Interact with Cypher via Python}, label={lst:pythonAndopenCypher}] 
+	from neo4j import GraphDatabase, RoutingControl
+	URI = "neo4j://<host>:7687"
+	AUTH = ("neo4j", "password")
+	
+	def add_customer(driver, customerName, locationName):
+		driver.execute_query(
+			"MERGE (a:Customer {name: $customerName}) "
+			"MERGE (location:City {name: $locationName}) "
+			"MERGE (a)-[:located]->(location)",
+			customerName=customerName, locationName=locationName, database_="neo4j",
+		)
+
+
+	def print_customer(driver, customerStatus):
+		records, _, _ = driver.execute_query(
+			"MATCH (a:Customer)-[:LOCATED]->(location) WHERE a.customerStatus = $customerStatus"
+			"RETURN location.name ORDER BY location.name",
+			name=name, database_="neo4j", routing_=RoutingControl.READ,
+		)
+		for record in records:
+			print(record["friend.name"])
+
+
+	with GraphDatabase.driver(URI, auth=AUTH) as driver:
+		add_customer(driver, "XYZ GmbH", "Bremen")
+		print_customer(driver, "active")
+\end{lstlisting}
+
+%*******************************************************
+% Gremlin
+%*******************************************************
+
+\section{Queries of Gremlin}
+
+\begin{lstlisting}[caption={Aggregation and Functions in Gremlin with Company Nodes}, label={lst:companyAggregationFunctionsGremlin}]
+	g.V().hasLabel('Company').as('c')
+	  .out('PARTNER_OF').hasLabel('Company').as('p')
+	  .group()
+	    .by('c')
+	    .by(
+	      fold().coalesce(
+	        unfold().values('revenue').mean().as('averagePartnerRevenue'),
+	        constant(0)
+	      ).as('averagePartnerRevenue')
+	      .count().as('partnersCount')
+	    )
+	  .select(keys, values)
+	  .unfold()
+	  .project('c.name', 'partnersCount', 'averagePartnerRevenue')
+	    .by(select(keys).values('name'))
+	    .by(select(values).select('partnersCount'))
+	    .by(select(values).select('averagePartnerRevenue'))
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Expressive Filtering in Gremlin with Company Nodes}, label={lst:companyExpressiveFilteringGremlin}]
+	g.V().hasLabel('Company').has('industry', 'Tech')
+	 .out('PARTNER_OF').hasLabel('Company').has('revenue', gt(1000000))
+	 .project('cName', 'pName', 'pRevenue')
+	   .by(inV().values('name'))
+	   .by(values('name'))
+	   .by(values('revenue'))
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Interact with Gremlin via Python}, label={lst:pythonAndGremlin}]
+	from gremlin_python.structure.graph import Graph
+	from gremlin_python.process.graph_traversal import __
+	from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+
+	URI = "ws://<host>:8182/gremlin"
+	AUTH = ("username", "password")
+
+	def add_customer(g, customerName, locationName):
+		g.V().hasLabel('Customer').has('name', customerName).fold().coalesce(
+			__.unfold(),
+			__.addV('Customer').property('name', customerName)
+		).as_('customer').V().hasLabel('City').has('name', locationName).fold().coalesce(
+			__.unfold(),
+			__.addV('City').property('name', locationName)
+		).as_('location').addE('located').from_('customer').to('location').iterate()
+
+	def print_customer(g, customerStatus):
+		customers = g.V().hasLabel('Customer').has('status', customerStatus).out('located').values('name').toList()
+		for customer in customers:
+			print(customer)
+
+	graph = Graph()
+	connection = DriverRemoteConnection(URI, 'g')
+	g = graph.traversal().withRemote(connection)
+
+	try:
+		add_customer(g, "XYZ GmbH", "Bremen")
+		print_customer(g, "active")
+	finally:
+		connection.close()
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Set Limits in Gremlin}, label={lst:limitGremlin}]
+	g.V().hasLabel('Company').has('name', 'ABC GmbH')
+		.outE('PARTNER_OF')
+		.inV().hasLabel('Company').has('name', 'XYZ AG')
+		.limit(10)
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Apply filter early strategy in Gremlin}, label={lst:filterEarlyGremlin}]
+	// No alligned with filter early strategy
+	g.V().out('partner_of').has('revenue', gt(100000)).values('name')
+
+	// Alligned  filter early strategy
+	g.V().has('revenue', gt(100000)).out('partner_of').values('name')
+
+\end{lstlisting}
+
+%*******************************************************
+% SPARQL
+%*******************************************************
+
+\section{Queries of SPARQL}
+
+\begin{lstlisting}[caption={Create Customer Objects in SPARQL}, label={lst:createSPARQL}]
+	@prefix ex: <http://examplehost.org/> .
+
+	ex:Customer1 a ex:Customer ;
+		ex:customerStatus "Inactive" ;
+		ex:invoiceAccepted "True" .
+
+	ex:Customer2 a ex:Customer ;
+		ex:customerStatus "Active" ;
+		ex:invoiceAccepted "True" .
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Update Customer Objects in SPARQL}, label={lst:updateSPARQL}]
+	PREFIX ex: <http://examplehost.org/>
+
+	DELETE {
+		?c ex:invoiceAccepted ?oldValue .
+	}
+	INSERT {
+		?c ex:invoiceAccepted "False" .
+	}
+	WHERE {
+		?c a ex:Customer ;
+		ex:customerStatus "Inactive" ;
+		ex:invoiceAccepted ?oldValue .
+	}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Aggregation and Functions in SPARQL}, label={lst:aggFuncSPARQL}]
+	PREFIX ex: <http://examplehost.org/>
+
+	SELECT ?companyName (COUNT(?partner) AS ?partnersCount) (AVG(?partnerRevenue) AS ?averagePartnerRevenue)
+	WHERE {
+	?company a ex:Company ;
+			ex:name ?companyName ;
+			ex:partnerOf ?partner .
+	
+	?partner a ex:Company ;
+				ex:revenue ?partnerRevenue .
+	}
+	GROUP BY ?companyName
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Expressive Filtering in SPARQL}, label={lst:expressiveFilteringSPARQL}]
+	PREFIX ex: <http://example.org/>
+
+	SELECT ?companyName ?partnerName ?partnerRevenue
+	WHERE {
+	?company a ex:Company ;
+			ex:name ?companyName ;
+			ex:industry "Tech" ;
+			ex:partnerOf ?partner .
+	
+	?partner a ex:Company ;
+				ex:name ?partnerName ;
+				ex:revenue ?partnerRevenue .
+	FILTER (?partnerRevenue > 1000000)
+	}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Interact with SPARQL and Python}, label={lst:pythonSPARQL}]
+	from SPARQLWrapper import SPARQLWrapper, JSON
+
+	ENDPOINT = "http://your-sparql-endpoint/sparql"
+	USERNAME = "your-username"
+	PASSWORD = "your-password"
+
+	def add_customer(sparql, customer_name, location_name):
+		query = f"""
+		PREFIX ex: <http://example.org/>
+
+		INSERT DATA {{
+		ex:{customer_name} a ex:Customer ;
+							ex:name "{customer_name}" ;
+							ex:located ex:{location_name} .
+							
+		ex:{location_name} a ex:City ;
+							ex:name "{location_name}" .
+		}}
+		"""
+		sparql.setQuery(query)
+		sparql.method = 'POST'
+		sparql.query()
+
+	def print_customer(sparql, customer_status):
+		query = f"""
+		PREFIX ex: <http://example.org/>
+
+		SELECT ?locationName
+		WHERE {{
+		?customer a ex:Customer ;
+					ex:customerStatus "{customer_status}" ;
+					ex:located ?location .
+		?location ex:name ?locationName .
+		}}
+		ORDER BY ?locationName
+		"""
+		sparql.setQuery(query)
+		sparql.setReturnFormat(JSON)
+		results = sparql.query().convert()
+
+		for result in results["results"]["bindings"]:
+			print(result["locationName"]["value"])
+
+	sparql = SPARQLWrapper(ENDPOINT)
+	sparql.setHTTPAuth("BASIC")
+	sparql.setCredentials(USERNAME, PASSWORD)
+
+	add_customer(sparql, "XYZ_GmbH", "Bremen")
+	print_customer(sparql, "active")
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Graph Pattern Matching in SPARQL}, label={lst:GPMSPARQL}]
+	SELECT ?a ?b
+	WHERE {
+  		?a ?r ?b .
+	}
+\end{lstlisting}
+

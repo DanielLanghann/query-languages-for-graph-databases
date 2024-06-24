@@ -1,0 +1,28 @@
+%*******************************************************
+% Acronyms
+%*******************************************************
+\automark[section]{chapter}
+\renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace\spacedlowsmallcaps{#1}}}
+\refstepcounter{dummy}
+\pdfbookmark[0]{List of abbreviations}{List of abbreviations}
+\markboth{\spacedlowsmallcaps{List of abbreviations}}{\spacedlowsmallcaps{List of abbreviations}}
+\chapter*{List of abbreviations}
+
+% Insert your acronyms here
+\begin{acronym}[UML]
+  \acro{API}{Application Programming Interface}
+  \acro{AWS}{Amazon Web Services}
+  \acro{ETL}{Extract, Transform, Load}
+  \acro{GPM}{Graph Pattern Matching}
+  \acro{GQL}{Graph Query Language}
+  \acro{ISO}{International Organization for Standardization}
+  \acro{QGP}{Quantified Graph Pattern}
+  \acro{RDF}{Resource Description Framework}
+  \acro{SQL}{Structured Query Language}
+  \acro{UML}{Unified Modeling Language}
+  \acro{URI}{Uniform Ressource Identifier}
+  \acro{W3C}{World Wide Web Consortium}
+\end{acronym}
+
+\cleardoublepage

@@ -1,0 +1,51 @@
+\chapter{Criteria for comparison}
+\label{ch:criteria_for_comparison}
+First, comparative criteria are introduced against which the different languages are compared.
+The evaluation is done purely qualitatively as this is a complex topic that is difficult to evaluate on the basis of a uniform scale. 
+Nevertheless, the aim is to evaluate the languages as objectively and reproducibly as possible on the basis of the defined criteria.
+
+\section{Expressiveness}
+\label{sec:criteria_for_comparison:expressiveness}
+Expressiveness in the context of query languages for graph databases means the ability 
+of a language to allow a wide range of queries on graphs and their underlying databases.
+An expressive language can be used with complex patterns and relationships
+even across various different graphs.
+In addition, an expressive language offers users the corresponding flexibility
+when querying graph structures \citep{barcelo_expressive_2012}.
+
+\section{Performance and Performance Optimization}
+\label{sec:criteria_for_comparison:performance}
+Performance is a decisive factor when dealing with the analysis of large amounts of data. 
+Especially when it comes to evaluations that need to be carried 
+out in real time or very quickly \citep{yuanyuan_tian_world_2022}. 
+A recommendation system does not help anyone if it does not deliver 
+an answer in a reasonable time \citep{MONDAL2020103549}.
+This criterion evaluates in particular the ability 
+of the corresponding language to enable techniques 
+that improve the performance of queries on graph databases \citep{yuanyuan_tian_world_2022}.
+
+
+\section{Interoperability}
+\label{sec:criteria_for_comparison:interoperability}
+How well a query language intergrates with other tools, techniques and other API`s (\ac{API}) is an important
+criteria for the decision for and against the query language and often for the entire 
+database system \citep{timon-reina_overview_2021}.
+
+\section{Closeness to the GQL standard}
+\label{sec:criteria_for_comparison:iso}
+Attention is also paid to how closely each language aligns with the 
+GQL standard. 
+A language that closely follows this standard, 
+or whose model and structure incorporate a significant portion of it, 
+ensures that users need to acquire minimal proprietary knowledge, 
+thereby enhancing user-friendliness. 
+Moreover, strong alignment with the GQL standard promotes interoperability 
+with other technologies and systems, as these are likely based on at least 
+the fundamental concepts of GQL \citep{hare_isoiec_2024}.
+The next chapter introduces the GQL standard, allowing the reader to compare various languages with it when reading chapter 
+\ref{ch:different_query_languages_for_graph_databases}.
+
+\section{Benchmark Querie}
+The benachmark querie to compare the capabilities of the different languages can be found in 
+listing \ref{lst:benchmark}.
+
